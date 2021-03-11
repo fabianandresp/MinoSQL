@@ -26,14 +26,12 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel1" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
               <Component id="jPanel1" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -55,30 +53,54 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="boxTablas" pref="186" max="32767" attributes="0"/>
-                              <Component id="boxEsquemas" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="boxEsquemas" min="-2" pref="186" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="txtNombreEsquema" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="BtnNuevoEsquema" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="BtnBorrarEsquema" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="16" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="txtNonmbreEsquema" max="32767" attributes="0"/>
-                              <Component id="txtNombreTabla" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="txtBusquedaSql" alignment="0" max="32767" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="BoxColumnas" max="32767" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="txtDatoBuscar" min="-2" pref="158" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="btnNuevoEsquema" max="32767" attributes="0"/>
-                              <Component id="btnNuevaTabla" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="BtnBuscarDato" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="BtnBorrarDato" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="BtnCargarDatos" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="BtnBuscarSql" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Component id="boxTablas" min="-2" pref="186" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="btnBorrarEsquema" max="32767" attributes="0"/>
-                              <Component id="btnBorrarTabla" max="32767" attributes="0"/>
-                          </Group>
+                          <Component id="txtNombreTabla" min="-2" pref="178" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="BtnNuevaTabla" min="-2" pref="121" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="BtnBorrarTabla" min="-2" pref="123" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
-                      <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -88,20 +110,33 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="boxEsquemas" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtNonmbreEsquema" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnNuevoEsquema" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnBorrarEsquema" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtNombreEsquema" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="BtnNuevoEsquema" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="BtnBorrarEsquema" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="boxTablas" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtNombreTabla" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="BtnNuevaTabla" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="BtnBorrarTabla" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" min="-2" pref="214" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="BoxColumnas" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtDatoBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="BtnBuscarDato" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="BtnBorrarDato" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="BtnCargarDatos" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="boxTablas" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnNuevaTabla" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnBorrarTabla" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtNombreTabla" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtBusquedaSql" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="BtnBuscarSql" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" min="-2" pref="341" max="-2" attributes="0"/>
-                  <EmptySpace pref="86" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -110,36 +145,74 @@
         <Component class="javax.swing.JComboBox" name="boxEsquemas">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="2">
-                <StringItem index="0" value="&quot; &quot;"/>
-                <StringItem index="1" value="&quot; &quot;.;"/>
-              </StringArray>
+              <StringArray count="0"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boxEsquemasActionPerformed"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtNonmbreEsquema">
+        <Component class="javax.swing.JTextField" name="txtNombreEsquema">
           <Properties>
             <Property name="text" type="java.lang.String" value="Ingresa nombre del esquema"/>
             <Property name="toolTipText" type="java.lang.String" value="Ingresa nombre del esquema"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtNonmbreEsquemaMouseClicked"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtNombreEsquemaMouseClicked"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNombreEsquemaActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnNuevoEsquema">
+        <Component class="javax.swing.JButton" name="BtnNuevoEsquema">
           <Properties>
             <Property name="text" type="java.lang.String" value="Nuevo Esquema"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnNuevoEsquemaActionPerformed"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnBorrarEsquema">
+        <Component class="javax.swing.JButton" name="BtnBorrarEsquema">
           <Properties>
             <Property name="text" type="java.lang.String" value="Borrar Esquema"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnBorrarEsquemaActionPerformed"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JComboBox" name="boxTablas">
+        <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JTable" name="jTable1">
+              <Properties>
+                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                  <Table columnCount="1" rowCount="0">
+                    <Column editable="false" title="ID" type="java.lang.Double"/>
+                  </Table>
+                </Property>
+                <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                  <TableColumnModel selectionModel="1">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                  </TableColumnModel>
+                </Property>
+                <Property name="columnSelectionAllowed" type="boolean" value="true"/>
+                <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                  <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                </Property>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Component class="javax.swing.JComboBox" name="BoxColumnas">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="4">
@@ -154,6 +227,55 @@
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
+        <Component class="javax.swing.JTextField" name="txtDatoBuscar">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Ingrese Dato a Buscar"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtDatoBuscarMouseClicked"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="BtnBuscarDato">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Buscar"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="BtnBorrarDato">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Borrar"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="BtnCargarDatos">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Cargar Datos"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtBusquedaSql">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Busqueda SQL"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtBusquedaSqlMouseClicked"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="BtnBuscarSql">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Buscar"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="boxTablas">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="0"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boxTablasActionPerformed"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
         <Component class="javax.swing.JTextField" name="txtNombreTabla">
           <Properties>
             <Property name="text" type="java.lang.String" value="Ingresa Nombre de la Tabla"/>
@@ -163,37 +285,16 @@
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtNombreTablaMouseClicked"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnNuevaTabla">
+        <Component class="javax.swing.JButton" name="BtnNuevaTabla">
           <Properties>
             <Property name="text" type="java.lang.String" value="Nueva Tabla"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="btnBorrarTabla">
+        <Component class="javax.swing.JButton" name="BtnBorrarTabla">
           <Properties>
             <Property name="text" type="java.lang.String" value="Borrar Tabla"/>
           </Properties>
         </Component>
-        <Container class="javax.swing.JScrollPane" name="jScrollPane1">
-          <AuxValues>
-            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-          </AuxValues>
-
-          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-          <SubComponents>
-            <Component class="javax.swing.JTable" name="jTable1">
-              <Properties>
-                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="4" rowCount="4">
-                    <Column editable="true" title="Title 1" type="java.lang.Object"/>
-                    <Column editable="true" title="Title 2" type="java.lang.Object"/>
-                    <Column editable="true" title="Title 3" type="java.lang.Object"/>
-                    <Column editable="true" title="Title 4" type="java.lang.Object"/>
-                  </Table>
-                </Property>
-              </Properties>
-            </Component>
-          </SubComponents>
-        </Container>
       </SubComponents>
     </Container>
   </SubComponents>

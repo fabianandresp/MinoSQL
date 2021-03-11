@@ -9,6 +9,9 @@ package Back;
  *
  * @author pimie
  */
-public class Prueba2 {
+public class Tablas {
+    
+    String nombre; 
+    
     
 }

@@ -5,17 +5,19 @@
  */
 package Interfaz;
 
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author pimie
  */
 public class Interfaz extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Interfaz
-     */
     public Interfaz() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
     }
 
     /**
@@ -29,35 +31,116 @@ public class Interfaz extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         boxEsquemas = new javax.swing.JComboBox<>();
-        txtNonmbreEsquema = new javax.swing.JTextField();
-        btnNuevoEsquema = new javax.swing.JButton();
-        btnBorrarEsquema = new javax.swing.JButton();
-        boxTablas = new javax.swing.JComboBox<>();
-        txtNombreTabla = new javax.swing.JTextField();
-        btnNuevaTabla = new javax.swing.JButton();
-        btnBorrarTabla = new javax.swing.JButton();
+        txtNombreEsquema = new javax.swing.JTextField();
+        BtnNuevoEsquema = new javax.swing.JButton();
+        BtnBorrarEsquema = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        BoxColumnas = new javax.swing.JComboBox<>();
+        txtDatoBuscar = new javax.swing.JTextField();
+        BtnBuscarDato = new javax.swing.JButton();
+        BtnBorrarDato = new javax.swing.JButton();
+        BtnCargarDatos = new javax.swing.JButton();
+        txtBusquedaSql = new javax.swing.JTextField();
+        BtnBuscarSql = new javax.swing.JButton();
+        boxTablas = new javax.swing.JComboBox<>();
+        txtNombreTabla = new javax.swing.JTextField();
+        BtnNuevaTabla = new javax.swing.JButton();
+        BtnBorrarTabla = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        boxEsquemas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "\" \"", "\" \".;" }));
-
-        txtNonmbreEsquema.setText("Ingresa nombre del esquema");
-        txtNonmbreEsquema.setToolTipText("Ingresa nombre del esquema");
-        txtNonmbreEsquema.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtNonmbreEsquemaMouseClicked(evt);
+        boxEsquemas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boxEsquemasActionPerformed(evt);
             }
         });
 
-        btnNuevoEsquema.setText("Nuevo Esquema");
+        txtNombreEsquema.setText("Ingresa nombre del esquema");
+        txtNombreEsquema.setToolTipText("Ingresa nombre del esquema");
+        txtNombreEsquema.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtNombreEsquemaMouseClicked(evt);
+            }
+        });
+        txtNombreEsquema.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreEsquemaActionPerformed(evt);
+            }
+        });
 
-        btnBorrarEsquema.setText("Borrar Esquema");
+        BtnNuevoEsquema.setText("Nuevo Esquema");
+        BtnNuevoEsquema.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnNuevoEsquemaActionPerformed(evt);
+            }
+        });
 
-        boxTablas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        BtnBorrarEsquema.setText("Borrar Esquema");
+        BtnBorrarEsquema.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnBorrarEsquemaActionPerformed(evt);
+            }
+        });
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Double.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable1.setColumnSelectionAllowed(true);
+        jScrollPane1.setViewportView(jTable1);
+        jTable1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+
+        BoxColumnas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        txtDatoBuscar.setText("Ingrese Dato a Buscar");
+        txtDatoBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtDatoBuscarMouseClicked(evt);
+            }
+        });
+
+        BtnBuscarDato.setText("Buscar");
+
+        BtnBorrarDato.setText("Borrar");
+
+        BtnCargarDatos.setText("Cargar Datos");
+
+        txtBusquedaSql.setText("Busqueda SQL");
+        txtBusquedaSql.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtBusquedaSqlMouseClicked(evt);
+            }
+        });
+
+        BtnBuscarSql.setText("Buscar");
+
+        boxTablas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boxTablasActionPerformed(evt);
+            }
+        });
 
         txtNombreTabla.setText("Ingresa Nombre de la Tabla");
         txtNombreTabla.setToolTipText("Ingresa Nombre de la Tabla");
@@ -67,22 +150,9 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
 
-        btnNuevaTabla.setText("Nueva Tabla");
+        BtnNuevaTabla.setText("Nueva Tabla");
 
-        btnBorrarTabla.setText("Borrar Tabla");
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        BtnBorrarTabla.setText("Borrar Tabla");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -92,24 +162,44 @@ public class Interfaz extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(boxTablas, 0, 186, Short.MAX_VALUE)
-                            .addComponent(boxEsquemas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtNonmbreEsquema)
-                            .addComponent(txtNombreTabla))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(boxEsquemas, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtNombreEsquema, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(BtnNuevoEsquema)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(BtnBorrarEsquema)
+                                .addGap(0, 16, Short.MAX_VALUE)))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtBusquedaSql, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(BoxColumnas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtDatoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnNuevoEsquema, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnNuevaTabla, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(BtnBuscarDato)
+                                .addGap(18, 18, 18)
+                                .addComponent(BtnBorrarDato)
+                                .addGap(18, 18, 18)
+                                .addComponent(BtnCargarDatos))
+                            .addComponent(BtnBuscarSql))
+                        .addGap(16, 16, 16))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(boxTablas, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnBorrarEsquema, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnBorrarTabla, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1))
-                .addContainerGap())
+                        .addComponent(txtNombreTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(BtnNuevaTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(BtnBorrarTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -117,18 +207,29 @@ public class Interfaz extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(boxEsquemas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNonmbreEsquema, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnNuevoEsquema)
-                    .addComponent(btnBorrarEsquema))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(txtNombreEsquema, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BtnNuevoEsquema)
+                    .addComponent(BtnBorrarEsquema))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(boxTablas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnNuevaTabla)
-                    .addComponent(btnBorrarTabla)
-                    .addComponent(txtNombreTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(86, Short.MAX_VALUE))
+                    .addComponent(txtNombreTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BtnNuevaTabla)
+                    .addComponent(BtnBorrarTabla))
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BoxColumnas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDatoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BtnBuscarDato)
+                    .addComponent(BtnBorrarDato)
+                    .addComponent(BtnCargarDatos))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtBusquedaSql, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BtnBuscarSql))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -137,13 +238,11 @@ public class Interfaz extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -151,13 +250,48 @@ public class Interfaz extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtNonmbreEsquemaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNonmbreEsquemaMouseClicked
-     txtNonmbreEsquema.setText(" ");
-    }//GEN-LAST:event_txtNonmbreEsquemaMouseClicked
+    private void txtNombreEsquemaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNombreEsquemaMouseClicked
+        txtNombreEsquema.setText(null);
+    }//GEN-LAST:event_txtNombreEsquemaMouseClicked
+
+    private void txtDatoBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtDatoBuscarMouseClicked
+        txtDatoBuscar.setText(null);
+    }//GEN-LAST:event_txtDatoBuscarMouseClicked
+
+    private void txtBusquedaSqlMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtBusquedaSqlMouseClicked
+        txtBusquedaSql.setText(null);
+    }//GEN-LAST:event_txtBusquedaSqlMouseClicked
+
+    private void BtnNuevoEsquemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNuevoEsquemaActionPerformed
+        agregarEsquema();
+    }//GEN-LAST:event_BtnNuevoEsquemaActionPerformed
+
+    private void boxEsquemasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxEsquemasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boxEsquemasActionPerformed
+
+    private void BtnBorrarEsquemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBorrarEsquemaActionPerformed
+        int confirmacion = JOptionPane.showConfirmDialog(this, "Seguro desea eliminar un esquema");
+        if (JOptionPane.YES_OPTION == confirmacion) {
+            borrarEsquema();
+            JOptionPane.showMessageDialog(this, " Se ha eliminado el esquema ");
+        } else {
+            JOptionPane.showMessageDialog(this, " No se ha elimnado nada ");
+        }
+
+    }//GEN-LAST:event_BtnBorrarEsquemaActionPerformed
 
     private void txtNombreTablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNombreTablaMouseClicked
         txtNombreTabla.setText(" ");
     }//GEN-LAST:event_txtNombreTablaMouseClicked
+
+    private void boxTablasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxTablasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boxTablasActionPerformed
+
+    private void txtNombreEsquemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreEsquemaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreEsquemaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -195,16 +329,53 @@ public class Interfaz extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> BoxColumnas;
+    private javax.swing.JButton BtnBorrarDato;
+    private javax.swing.JButton BtnBorrarEsquema;
+    private javax.swing.JButton BtnBorrarTabla;
+    private javax.swing.JButton BtnBuscarDato;
+    private javax.swing.JButton BtnBuscarSql;
+    private javax.swing.JButton BtnCargarDatos;
+    private javax.swing.JButton BtnNuevaTabla;
+    private javax.swing.JButton BtnNuevoEsquema;
     private javax.swing.JComboBox<String> boxEsquemas;
     private javax.swing.JComboBox<String> boxTablas;
-    private javax.swing.JButton btnBorrarEsquema;
-    private javax.swing.JButton btnBorrarTabla;
-    private javax.swing.JButton btnNuevaTabla;
-    private javax.swing.JButton btnNuevoEsquema;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTextField txtBusquedaSql;
+    private javax.swing.JTextField txtDatoBuscar;
+    private javax.swing.JTextField txtNombreEsquema;
     private javax.swing.JTextField txtNombreTabla;
-    private javax.swing.JTextField txtNonmbreEsquema;
     // End of variables declaration//GEN-END:variables
+
+    ArrayList<String> esquema = new ArrayList<>();
+
+    public void agregarEsquema() {
+        String name = txtNombreEsquema.getText();
+
+        if (name != null) {
+            esquema.add(name);
+            boxEsquemas.addItem(name);
+
+            System.out.println(" Se ha guardado el esquema con exito ");
+
+            for (int i = 0; i < esquema.size(); i++) {
+                System.out.println(" NOMBRES DE ESQUEMAS CREADO " + esquema.get((i)));
+
+            }
+            txtNombreEsquema.setText(null);
+
+        } else if (name == null) {
+            JOptionPane.showMessageDialog(this, " Por favor escriba el nombre del esquema que desea crear");
+
+        }
+    }
+
+    public void borrarEsquema() {
+
+        esquema.remove(esquema.size() - 1);
+        boxEsquemas.removeItemAt(esquema.size());
+
+    }
 }

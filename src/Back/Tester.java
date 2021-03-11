@@ -5,10 +5,18 @@
  */
 package Back;
 
+import Interfaz.Interfaz;
+
 /**
  *
  * @author pimie
  */
-public class Control {
-    
+public class Tester {
+    public static void main( String [] args){
+        
+      
+        
+    }
 }
+    
+
