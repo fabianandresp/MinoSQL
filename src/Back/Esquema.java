@@ -7,33 +7,23 @@ package Back;
 
 import Interfaz.Interfaz;
 import java.util.HashMap;
+import static jdk.nashorn.internal.runtime.Debug.id;
 
-/**
- *
- * @author pimie
- */
+//NO TOMAR EN CUENTA AUN!!
+
 public class Esquema {
-    Interfaz obtener = new Interfaz();
-    
-    int id;
-    String nombre;
-    
-    HashMap <Integer, String> IdEsquemas = new HashMap<>();
-    
-    public void asignarId(){
-        
-        
-    }
 
-    public Esquema(int id, String nombre) {
-        this.id = id;
-        this.nombre = nombre;
-    }
+    Interfaz obtener = new Interfaz();
+
+    Integer cont = 0;
+    String nombre;
+
+    HashMap<Integer, Esquema> id = new HashMap<>();
 
     public Esquema() {
+
     }
-    
-    
+
     public Esquema(String nombre) {
         this.nombre = nombre;
     }
@@ -46,16 +36,4 @@ public class Esquema {
         this.nombre = nombre;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-    
-     
-    
-    
-    
 }

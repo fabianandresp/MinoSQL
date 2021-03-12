@@ -5,6 +5,7 @@
  */
 package Interfaz;
 
+import Back.Esquema;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -60,6 +61,7 @@ public class Interfaz extends javax.swing.JFrame {
 
         txtNombreEsquema.setText("Ingresa nombre del esquema");
         txtNombreEsquema.setToolTipText("Ingresa nombre del esquema");
+        txtNombreEsquema.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtNombreEsquema.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtNombreEsquemaMouseClicked(evt);
@@ -172,15 +174,15 @@ public class Interfaz extends javax.swing.JFrame {
                                 .addComponent(BtnNuevoEsquema)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(BtnBorrarEsquema)
-                                .addGap(0, 16, Short.MAX_VALUE)))
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtBusquedaSql, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtBusquedaSql)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(BoxColumnas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtDatoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(BoxColumnas, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtDatoBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -194,12 +196,12 @@ public class Interfaz extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(boxTablas, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtNombreTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtNombreTabla, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
                         .addComponent(BtnNuevaTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(BtnBorrarTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(0, 22, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -210,7 +212,7 @@ public class Interfaz extends javax.swing.JFrame {
                     .addComponent(txtNombreEsquema, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BtnNuevoEsquema)
                     .addComponent(BtnBorrarEsquema))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(boxTablas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNombreTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -251,7 +253,7 @@ public class Interfaz extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtNombreEsquemaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNombreEsquemaMouseClicked
-        txtNombreEsquema.setText(null);
+        txtNombreEsquema.setText(" ");
     }//GEN-LAST:event_txtNombreEsquemaMouseClicked
 
     private void txtDatoBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtDatoBuscarMouseClicked
@@ -263,7 +265,14 @@ public class Interfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_txtBusquedaSqlMouseClicked
 
     private void BtnNuevoEsquemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNuevoEsquemaActionPerformed
-        agregarEsquema();
+        if (!" ".equals(txtNombreEsquema.getText())) {
+            agregarEsquema();
+
+        } else {
+            JOptionPane.showMessageDialog(this, "Por favor digite un nombre");
+        }
+
+
     }//GEN-LAST:event_BtnNuevoEsquemaActionPerformed
 
     private void boxEsquemasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxEsquemasActionPerformed
@@ -354,22 +363,16 @@ public class Interfaz extends javax.swing.JFrame {
     public void agregarEsquema() {
         String name = txtNombreEsquema.getText();
 
-        if (name != null) {
-            esquema.add(name);
-            boxEsquemas.addItem(name);
+        esquema.add(name);
+        boxEsquemas.addItem(name);
+        txtNombreEsquema.setText(" ");
+        System.out.println(" Se ha guardado el esquema con exito ");
 
-            System.out.println(" Se ha guardado el esquema con exito ");
-
-            for (int i = 0; i < esquema.size(); i++) {
-                System.out.println(" NOMBRES DE ESQUEMAS CREADO " + esquema.get((i)));
-
-            }
-            txtNombreEsquema.setText(null);
-
-        } else if (name == null) {
-            JOptionPane.showMessageDialog(this, " Por favor escriba el nombre del esquema que desea crear");
+        for (int i = 0; i < esquema.size(); i++) {
+            System.out.println(" NOMBRES DE ESQUEMAS CREADO " + esquema.get((i)));
 
         }
+
     }
 
     public void borrarEsquema() {
@@ -378,4 +381,5 @@ public class Interfaz extends javax.swing.JFrame {
         boxEsquemas.removeItemAt(esquema.size());
 
     }
+
 }
