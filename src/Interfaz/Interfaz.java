@@ -15,6 +15,8 @@ import javax.swing.JOptionPane;
  * @author pimie
  */
 public class Interfaz extends javax.swing.JFrame {
+    
+    InterfazNuevaTabla creacionJTable = new InterfazNuevaTabla();
 
     public Interfaz() {
         initComponents();
@@ -37,7 +39,7 @@ public class Interfaz extends javax.swing.JFrame {
         BtnNuevoEsquema = new javax.swing.JButton();
         BtnBorrarEsquema = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTablePrincipal = new javax.swing.JTable();
         BoxColumnas = new javax.swing.JComboBox<>();
         txtDatoBuscar = new javax.swing.JTextField();
         BtnBuscarDato = new javax.swing.JButton();
@@ -88,7 +90,7 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTablePrincipal.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -111,11 +113,16 @@ public class Interfaz extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.setColumnSelectionAllowed(true);
-        jScrollPane1.setViewportView(jTable1);
-        jTable1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jTablePrincipal.setColumnSelectionAllowed(true);
+        jScrollPane1.setViewportView(jTablePrincipal);
+        jTablePrincipal.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
         BoxColumnas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        BoxColumnas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BoxColumnasActionPerformed(evt);
+            }
+        });
 
         txtDatoBuscar.setText("Ingrese Dato a Buscar");
         txtDatoBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -125,6 +132,11 @@ public class Interfaz extends javax.swing.JFrame {
         });
 
         BtnBuscarDato.setText("Buscar");
+        BtnBuscarDato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnBuscarDatoActionPerformed(evt);
+            }
+        });
 
         BtnBorrarDato.setText("Borrar");
 
@@ -152,6 +164,11 @@ public class Interfaz extends javax.swing.JFrame {
 
         txtNombreTabla.setText("Ingresa Nombre de la Tabla");
         txtNombreTabla.setToolTipText("Ingresa Nombre de la Tabla");
+        txtNombreTabla.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtNombreTablaFocusGained(evt);
+            }
+        });
         txtNombreTabla.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtNombreTablaMouseClicked(evt);
@@ -187,7 +204,7 @@ public class Interfaz extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(boxEsquemas, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtNombreEsquema, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtNombreEsquema, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(BtnNuevoEsquema)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -326,6 +343,7 @@ public class Interfaz extends javax.swing.JFrame {
         
         if(!txtNombreTabla.equals("")) {
             agregarTabla();
+            creacionJTable.setVisible(true);
         
         } else {
             JOptionPane.showMessageDialog(this, "Por favor ingrese un nombre.");
@@ -341,8 +359,24 @@ public class Interfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_boxTablasMouseClicked
 
     private void BtnBorrarTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBorrarTablaActionPerformed
-        // TODO add your handling code here:
+        int mensajeConfirmacion = JOptionPane.showConfirmDialog(this, "Seguro que desea borrar está tabla?");
+        if(JOptionPane.YES_OPTION == mensajeConfirmacion) {
+            borrarTabla();
+            JOptionPane.showMessageDialog(this, "La tabla se ha eliminado correctamente!");
+        } 
     }//GEN-LAST:event_BtnBorrarTablaActionPerformed
+
+    private void txtNombreTablaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreTablaFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreTablaFocusGained
+
+    private void BoxColumnasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BoxColumnasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BoxColumnasActionPerformed
+
+    private void BtnBuscarDatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBuscarDatoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnBuscarDatoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -393,7 +427,7 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> boxTablas;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTablePrincipal;
     private javax.swing.JTextField txtBusquedaSql;
     private javax.swing.JTextField txtDatoBuscar;
     private javax.swing.JTextField txtNombreEsquema;
@@ -402,7 +436,7 @@ public class Interfaz extends javax.swing.JFrame {
 
     ArrayList<String> esquema = new ArrayList<>();
     ArrayList<Tablas> tablas = new ArrayList<>();
-
+    
     public void agregarEsquema() {
         String name = txtNombreEsquema.getText();
 
@@ -433,13 +467,20 @@ public class Interfaz extends javax.swing.JFrame {
         tablas.add(tablaX); 
         boxTablas.addItem(tablaX.getNombre());
         txtNombreTabla.setText("");
+        System.out.println("Tabla guardada con exito!");
         
     }
     
     public void borrarTabla() {
+        
         tablas.remove(tablas.size() -1);
-        //tablas.remove(boxTablas.setSelectedItem(ABORT))
-        boxTablas.remove(tablas.size());
+        boxTablas.removeItemAt(tablas.size());
     }
-
+    
+    public void insertarColumnas() {
+        
+        for(int i = 0; i < creacionJTable.titulosColumnas.size(); i++) {
+            //jTablePrincipal.addColumn();
+        }
+    }
 }
