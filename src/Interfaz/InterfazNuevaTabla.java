@@ -5,8 +5,11 @@
  */
 package Interfaz;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
-import javax.swing.JLabel;
+import java.awt.TextField;
+import java.util.ArrayList;
+import javax.swing.JTextField;
 
 /**
  *
@@ -18,8 +21,8 @@ public class InterfazNuevaTabla extends javax.swing.JFrame {
      * Creates new form InterfazNuevaTabla
      */
     
-    //NO TOMAR EN CUENTA ESTA INSTANCIA TODAVIA
-    //Interfaz principal = new Interfaz();
+    Interfaz principal = new Interfaz();
+    ArrayList<String> titulosColumnas = new ArrayList<>();
     
     public InterfazNuevaTabla() {
         initComponents();
@@ -38,9 +41,10 @@ public class InterfazNuevaTabla extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         txtNombreColumna = new javax.swing.JTextField();
-        btnNuevaColumna = new javax.swing.JButton();
         btnListo = new javax.swing.JButton();
-        txtNombreTabla = new javax.swing.JTextField();
+        txtNombreTablaCreada = new javax.swing.JTextField();
+        btnNuevaColumna = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,6 +68,28 @@ public class InterfazNuevaTabla extends javax.swing.JFrame {
         });
         jPanel1.add(txtNombreColumna, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 128, 30));
 
+        btnListo.setText("Listo");
+        btnListo.setPreferredSize(new java.awt.Dimension(40, 30));
+        jPanel1.add(btnListo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 330, 80, -1));
+
+        txtNombreTablaCreada.setBackground(new java.awt.Color(255, 255, 255));
+        txtNombreTablaCreada.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtNombreTablaCreada.setText("Ingrese el nombre de la Tabla");
+        txtNombreTablaCreada.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtNombreTablaCreadaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtNombreTablaCreadaFocusLost(evt);
+            }
+        });
+        txtNombreTablaCreada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreTablaCreadaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtNombreTablaCreada, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 130, 30));
+
         btnNuevaColumna.setText("Nueva Columna");
         btnNuevaColumna.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,32 +98,24 @@ public class InterfazNuevaTabla extends javax.swing.JFrame {
         });
         jPanel1.add(btnNuevaColumna, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, -1, -1));
 
-        btnListo.setText("Listo");
-        jPanel1.add(btnListo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 340, -1, -1));
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 130, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 210, Short.MAX_VALUE)
+        );
 
-        txtNombreTabla.setBackground(new java.awt.Color(255, 255, 255));
-        txtNombreTabla.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtNombreTabla.setText("Ingrese el nombre de la Tabla");
-        txtNombreTabla.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtNombreTablaFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtNombreTablaFocusLost(evt);
-            }
-        });
-        txtNombreTabla.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreTablaActionPerformed(evt);
-            }
-        });
-        jPanel1.add(txtNombreTabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 190, 30));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 130, 210));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -106,27 +124,6 @@ public class InterfazNuevaTabla extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtNombreTablaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreTablaFocusGained
-
-        if (txtNombreTabla.getText().equals("Ingrese el nombre de la Tabla")) {
-            txtNombreTabla.setText("");
-            txtNombreTabla.setForeground(new Color(153,153,153));
-        }
-    }//GEN-LAST:event_txtNombreTablaFocusGained
-
-    private void txtNombreTablaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreTablaFocusLost
-       
-        if (txtNombreTabla.getText().equals("")) {
-            txtNombreTabla.setText("Ingrese el nombre de la Tabla");
-            txtNombreTabla.setForeground(new Color(153,153,153));
-        }
-    }//GEN-LAST:event_txtNombreTablaFocusLost
-
-    private void txtNombreTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreTablaActionPerformed
-        // TODO add your handling code here:
-        txtNombreTabla.getText();
-    }//GEN-LAST:event_txtNombreTablaActionPerformed
 
     private void txtNombreColumnaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreColumnaFocusGained
         
@@ -149,9 +146,40 @@ public class InterfazNuevaTabla extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNombreColumnaActionPerformed
 
     private void btnNuevaColumnaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevaColumnaActionPerformed
-        // TODO add your handling code here:
+        String nombreColumna = txtNombreColumna.getText();
+        titulosColumnas.add(nombreColumna);
+        txtNombreColumna.setText("");
+        System.out.println("**Se agrego una columna**");
+        
+        //Esto no esta funcionando bien aun no logro levantar el jTextField que despliegue el nombre!
+        TextField mostrarColumnas = new TextField(txtNombreColumna.getText(), 20);
+        mostrarColumnas.setVisible(true);
+        jPanel2.add(mostrarColumnas, BorderLayout.CENTER, -1);
+        //jPanel1.add(mostrarColumnas, -1, getComponentCount()-1);
         
     }//GEN-LAST:event_btnNuevaColumnaActionPerformed
+
+    private void txtNombreTablaCreadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreTablaCreadaActionPerformed
+        // = principal.tablas.get(principal.tablas.size());
+        //txtNombreTablaCreada.setText(principal.tablas.get(WIDTH);
+       
+    }//GEN-LAST:event_txtNombreTablaCreadaActionPerformed
+
+    private void txtNombreTablaCreadaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreTablaCreadaFocusLost
+
+        if (txtNombreTablaCreada.getText().equals("")) {
+            txtNombreTablaCreada.setText("Ingrese el nombre de la Tabla");
+            txtNombreTablaCreada.setForeground(new Color(153,153,153));
+        }
+    }//GEN-LAST:event_txtNombreTablaCreadaFocusLost
+
+    private void txtNombreTablaCreadaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreTablaCreadaFocusGained
+
+        if (txtNombreTablaCreada.getText().equals("Ingrese el nombre de la Tabla")) {
+            txtNombreTablaCreada.setText("");
+            txtNombreTablaCreada.setForeground(new Color(153,153,153));
+        }
+    }//GEN-LAST:event_txtNombreTablaCreadaFocusGained
 
     /**
      * @param args the command line arguments
@@ -192,7 +220,8 @@ public class InterfazNuevaTabla extends javax.swing.JFrame {
     private javax.swing.JButton btnListo;
     private javax.swing.JButton btnNuevaColumna;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField txtNombreColumna;
-    private javax.swing.JTextField txtNombreTabla;
+    private javax.swing.JTextField txtNombreTablaCreada;
     // End of variables declaration//GEN-END:variables
 }

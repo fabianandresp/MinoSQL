@@ -15,7 +15,13 @@ import javax.swing.JOptionPane;
  * @author pimie
  */
 public class Interfaz extends javax.swing.JFrame {
-
+    /* **FABIAN IMPORTANTE** al realizar esta instancia he intentar vincular 
+    la interfaz secundaria a esta principal me lanza el error: java.lang.StackOverflowError */ //OTRA VEZ...! :(
+    
+    //InterfazNuevaTabla creacionJTable = new InterfazNuevaTabla(); // DESCOMENTAR ESTA LINEA Y PROBAR
+    
+    //NOTA ADICIONAL: Revisar linea 338 
+    
     public Interfaz() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -37,7 +43,7 @@ public class Interfaz extends javax.swing.JFrame {
         BtnNuevoEsquema = new javax.swing.JButton();
         BtnBorrarEsquema = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTablePrincipal = new javax.swing.JTable();
         BoxColumnas = new javax.swing.JComboBox<>();
         txtDatoBuscar = new javax.swing.JTextField();
         BtnBuscarDato = new javax.swing.JButton();
@@ -88,7 +94,7 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTablePrincipal.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -111,9 +117,9 @@ public class Interfaz extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.setColumnSelectionAllowed(true);
-        jScrollPane1.setViewportView(jTable1);
-        jTable1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jTablePrincipal.setColumnSelectionAllowed(true);
+        jScrollPane1.setViewportView(jTablePrincipal);
+        jTablePrincipal.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
         BoxColumnas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -330,6 +336,9 @@ public class Interfaz extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "Por favor ingrese un nombre.");
         }
+        
+        //NECESITO ESTO DENTRO DE ESTA FUNCION PERO EL ERROR ANTES MENCIONADO NO ME DEJA X ESO ESTA COMENTADA!!
+        //creacionJTable.setVisible(true); //DESCOMENTAR ESTA LINEA Y PROBAR
     }//GEN-LAST:event_BtnNuevaTablaActionPerformed
 
     private void txtNombreTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreTablaActionPerformed
@@ -341,7 +350,7 @@ public class Interfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_boxTablasMouseClicked
 
     private void BtnBorrarTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBorrarTablaActionPerformed
-        // TODO add your handling code here:
+        borrarTabla();
     }//GEN-LAST:event_BtnBorrarTablaActionPerformed
 
     /**
@@ -393,7 +402,7 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> boxTablas;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTablePrincipal;
     private javax.swing.JTextField txtBusquedaSql;
     private javax.swing.JTextField txtDatoBuscar;
     private javax.swing.JTextField txtNombreEsquema;
@@ -439,7 +448,7 @@ public class Interfaz extends javax.swing.JFrame {
     public void borrarTabla() {
         tablas.remove(tablas.size() -1);
         //tablas.remove(boxTablas.setSelectedItem(ABORT))
-        boxTablas.remove(tablas.size());
+        boxTablas.removeItemAt(tablas.size());
     }
 
 }
