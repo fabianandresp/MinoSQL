@@ -36,5 +36,11 @@ public class Tablas {
     public void setNumColumnas(int numColumnas) {
         this.numColumnas = numColumnas;
     }
+
+    @Override
+    public String toString() {
+        return  nombre + "." + numColumnas;
+    }
+    
     
 }

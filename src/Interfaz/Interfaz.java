@@ -8,6 +8,8 @@ package Interfaz;
 import Back.Esquema;
 import Back.Tablas;
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.TreeMap;
 import javax.swing.JOptionPane;
 
 /**
@@ -15,13 +17,11 @@ import javax.swing.JOptionPane;
  * @author pimie
  */
 public class Interfaz extends javax.swing.JFrame {
+
     /* **FABIAN IMPORTANTE** al realizar esta instancia he intentar vincular 
     la interfaz secundaria a esta principal me lanza el error: java.lang.StackOverflowError */ //OTRA VEZ...! :(
-    
     //InterfazNuevaTabla creacionJTable = new InterfazNuevaTabla(); // DESCOMENTAR ESTA LINEA Y PROBAR
-    
     //NOTA ADICIONAL: Revisar linea 341 
-    
     public Interfaz() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -75,6 +75,7 @@ public class Interfaz extends javax.swing.JFrame {
         txtNombreEsquema.setText("Ingresa nombre del esquema");
         txtNombreEsquema.setToolTipText("Ingresa nombre del esquema");
         txtNombreEsquema.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtNombreEsquema.setName(""); // NOI18N
         txtNombreEsquema.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtNombreEsquemaMouseClicked(evt);
@@ -217,10 +218,10 @@ public class Interfaz extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(boxEsquemas, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtNombreEsquema, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addComponent(txtNombreEsquema, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(25, 25, 25)
                         .addComponent(BtnNuevoEsquema)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(BtnBorrarEsquema)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -247,11 +248,11 @@ public class Interfaz extends javax.swing.JFrame {
                                 .addComponent(boxTablas, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtNombreTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addGap(30, 30, 30)
                                 .addComponent(BtnNuevaTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(BtnBorrarTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 14, Short.MAX_VALUE)))
+                                .addGap(0, 8, Short.MAX_VALUE)))
                         .addGap(22, 22, 22))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -318,6 +319,7 @@ public class Interfaz extends javax.swing.JFrame {
     private void BtnNuevoEsquemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNuevoEsquemaActionPerformed
         if (!" ".equals(txtNombreEsquema.getText())) {
             agregarEsquema();
+            asignar_id();
 
         } else {
             JOptionPane.showMessageDialog(this, "Por favor digite un nombre");
@@ -353,17 +355,21 @@ public class Interfaz extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreEsquemaActionPerformed
 
+    //DEBEMOS CONDICIONAR ESTE BOTON, DE TAL MANERA QUE SI EL BOX DE ESQUEMA ESTA VACIO NO PUEDE CREAR TABLAS
+    // LUEGO CONDICIONAR LAS TABLAS SEGUN EL ESQUEMA SELECCIONADO
+    // DE MANERA SILIMAR LAS  COLUMNAS DE ACUERDO A LA TABLA DONDE SE CREARON
+
     private void BtnNuevaTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNuevaTablaActionPerformed
-        
-        if(!txtNombreTabla.equals("")) {
+        InterfazNuevaTabla creacionJTable = new InterfazNuevaTabla();
+        if (!txtNombreTabla.equals("")) {
             agregarTabla();
-        
+
         } else {
             JOptionPane.showMessageDialog(this, "Por favor ingrese un nombre.");
         }
-        
+
         //NECESITO ESTO DENTRO DE ESTA FUNCION PERO EL ERROR ANTES MENCIONADO NO ME DEJA X ESO ESTA COMENTADA!!
-        //creacionJTable.setVisible(true); //DESCOMENTAR ESTA LINEA Y PROBAR
+        creacionJTable.setVisible(true); //FUNCIONANDO CORRECTAMENTE
     }//GEN-LAST:event_BtnNuevaTablaActionPerformed
 
     private void txtNombreTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreTablaActionPerformed
@@ -436,6 +442,17 @@ public class Interfaz extends javax.swing.JFrame {
 
     ArrayList<String> esquema = new ArrayList<>();
     ArrayList<Tablas> tablas = new ArrayList<>();
+    Map<Integer, String> asignarId = new TreeMap<>();
+    int cont = 1;
+    int cont2 = 0;
+
+    public void asignar_id() {
+
+        asignarId.put(cont, esquema.get(cont2));
+        cont++;
+        cont2++;
+        System.out.println(asignarId.size());
+    }
 
     public void agregarEsquema() {
         String name = txtNombreEsquema.getText();
@@ -456,24 +473,44 @@ public class Interfaz extends javax.swing.JFrame {
 
         esquema.remove(esquema.size() - 1);
         boxEsquemas.removeItemAt(esquema.size());
+        asignarId.remove(cont);
+        System.out.println(asignarId.size() - 1 + " Tamaño del MAP ");
+        cont--;
+        cont2--;
 
     }
-    
+
     //Metodos jTable
     public void agregarTabla() {
-        
+        //InterfazNuevaTabla setNombre = new InterfazNuevaTabla();
         Tablas tablaX = new Tablas();
         tablaX.setNombre(txtNombreTabla.getText());
-        tablas.add(tablaX); 
+        tablas.add(tablaX);
         boxTablas.addItem(tablaX.getNombre());
         txtNombreTabla.setText("");
-        
+
     }
-    
+
     public void borrarTabla() {
-        tablas.remove(tablas.size() -1);
+        tablas.remove(tablas.size() - 1);
         //tablas.remove(boxTablas.setSelectedItem(ABORT))
         boxTablas.removeItemAt(tablas.size());
+    }
+
+    //METODO QUE PODEMOS UTILIZAR PARA OBTENER DATOS DEL MAP, SI ES NECESARIO
+    public void obtenerDatosMap() {
+        asignarId.entrySet().forEach((datosMap) -> {
+            Integer clave = datosMap.getKey();
+            String valor = datosMap.getValue();
+            System.out.println(clave + "." + valor);
+        });
+    }
+    
+    public void nameColumnas(){
+        InterfazNuevaTabla obtenerNames = new InterfazNuevaTabla();
+        
+       BoxColumnas.addItem(obtenerNames.titulosColumnas.get(0));
+       
     }
 
 }

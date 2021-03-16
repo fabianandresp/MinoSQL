@@ -5,20 +5,10 @@
  */
 package Back;
 
-import Interfaz.Interfaz;
-import java.util.HashMap;
-import static jdk.nashorn.internal.runtime.Debug.id;
-
-//NO TOMAR EN CUENTA AUN!!
 
 public class Esquema {
 
-    Interfaz obtener = new Interfaz();
-
-    Integer cont = 0;
     String nombre;
-
-    HashMap<Integer, Esquema> id = new HashMap<>();
 
     public Esquema() {
 
@@ -36,4 +26,10 @@ public class Esquema {
         this.nombre = nombre;
     }
 
+    @Override
+    public String toString() {
+        return   nombre ;
+    }
+
+    
 }
