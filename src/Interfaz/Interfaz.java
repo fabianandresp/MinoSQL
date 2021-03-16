@@ -20,7 +20,7 @@ public class Interfaz extends javax.swing.JFrame {
     
     //InterfazNuevaTabla creacionJTable = new InterfazNuevaTabla(); // DESCOMENTAR ESTA LINEA Y PROBAR
     
-    //NOTA ADICIONAL: Revisar linea 338 
+    //NOTA ADICIONAL: Revisar linea 341 
     
     public Interfaz() {
         initComponents();
@@ -57,15 +57,21 @@ public class Interfaz extends javax.swing.JFrame {
         BtnBorrarTabla = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("MiNoSQL");
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(254, 251, 244));
 
+        boxEsquemas.setBackground(new java.awt.Color(95, 94, 60));
         boxEsquemas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boxEsquemasActionPerformed(evt);
             }
         });
 
+        txtNombreEsquema.setBackground(new java.awt.Color(225, 228, 220));
+        txtNombreEsquema.setFont(new java.awt.Font("Bahnschrift", 0, 12)); // NOI18N
+        txtNombreEsquema.setForeground(new java.awt.Color(63, 62, 40));
+        txtNombreEsquema.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txtNombreEsquema.setText("Ingresa nombre del esquema");
         txtNombreEsquema.setToolTipText("Ingresa nombre del esquema");
         txtNombreEsquema.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -80,6 +86,9 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
 
+        BtnNuevoEsquema.setBackground(new java.awt.Color(95, 94, 60));
+        BtnNuevoEsquema.setFont(new java.awt.Font("Bahnschrift", 1, 12)); // NOI18N
+        BtnNuevoEsquema.setForeground(new java.awt.Color(63, 62, 40));
         BtnNuevoEsquema.setText("Nuevo Esquema");
         BtnNuevoEsquema.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -87,6 +96,9 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
 
+        BtnBorrarEsquema.setBackground(new java.awt.Color(95, 94, 60));
+        BtnBorrarEsquema.setFont(new java.awt.Font("Bahnschrift", 1, 12)); // NOI18N
+        BtnBorrarEsquema.setForeground(new java.awt.Color(63, 62, 40));
         BtnBorrarEsquema.setText("Borrar Esquema");
         BtnBorrarEsquema.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,6 +133,7 @@ public class Interfaz extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTablePrincipal);
         jTablePrincipal.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
+        BoxColumnas.setBackground(new java.awt.Color(95, 94, 60));
         BoxColumnas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         txtDatoBuscar.setText("Ingrese Dato a Buscar");
@@ -145,6 +158,7 @@ public class Interfaz extends javax.swing.JFrame {
 
         BtnBuscarSql.setText("Buscar");
 
+        boxTablas.setBackground(new java.awt.Color(95, 94, 60));
         boxTablas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 boxTablasMouseClicked(evt);
@@ -156,6 +170,10 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
 
+        txtNombreTabla.setBackground(new java.awt.Color(225, 228, 220));
+        txtNombreTabla.setFont(new java.awt.Font("Bahnschrift", 0, 12)); // NOI18N
+        txtNombreTabla.setForeground(new java.awt.Color(63, 62, 40));
+        txtNombreTabla.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txtNombreTabla.setText("Ingresa Nombre de la Tabla");
         txtNombreTabla.setToolTipText("Ingresa Nombre de la Tabla");
         txtNombreTabla.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -169,6 +187,9 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
 
+        BtnNuevaTabla.setBackground(new java.awt.Color(95, 94, 60));
+        BtnNuevaTabla.setFont(new java.awt.Font("Bahnschrift", 1, 12)); // NOI18N
+        BtnNuevaTabla.setForeground(new java.awt.Color(63, 62, 40));
         BtnNuevaTabla.setText("Nueva Tabla");
         BtnNuevaTabla.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -176,6 +197,9 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
 
+        BtnBorrarTabla.setBackground(new java.awt.Color(95, 94, 60));
+        BtnBorrarTabla.setFont(new java.awt.Font("Bahnschrift", 1, 12)); // NOI18N
+        BtnBorrarTabla.setForeground(new java.awt.Color(63, 62, 40));
         BtnBorrarTabla.setText("Borrar Tabla");
         BtnBorrarTabla.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -198,14 +222,14 @@ public class Interfaz extends javax.swing.JFrame {
                         .addComponent(BtnNuevoEsquema)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(BtnBorrarEsquema)
-                        .addContainerGap(22, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(txtBusquedaSql)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(BoxColumnas, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtDatoBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)))
+                                .addComponent(txtDatoBuscar)))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -222,11 +246,12 @@ public class Interfaz extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(boxTablas, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtNombreTabla, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
+                                .addComponent(txtNombreTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(BtnNuevaTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(BtnBorrarTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(BtnBorrarTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 14, Short.MAX_VALUE)))
                         .addGap(22, 22, 22))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -265,8 +290,8 @@ public class Interfaz extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

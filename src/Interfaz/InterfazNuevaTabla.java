@@ -7,9 +7,10 @@ package Interfaz;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.FlowLayout;
 import java.awt.TextField;
 import java.util.ArrayList;
-import javax.swing.JTextField;
+import javax.swing.JButton;
 
 /**
  *
@@ -154,9 +155,11 @@ public class InterfazNuevaTabla extends javax.swing.JFrame {
         //Esto no esta funcionando bien aun no logro levantar el jTextField que despliegue el nombre!
         TextField mostrarColumnas = new TextField(txtNombreColumna.getText(), 20);
         mostrarColumnas.setVisible(true);
-        jPanel2.add(mostrarColumnas, BorderLayout.CENTER, -1);
+        jPanel2.add(mostrarColumnas, FlowLayout.CENTER, -1);
         //jPanel1.add(mostrarColumnas, -1, getComponentCount()-1);
         
+        JButton botonEliminar = new JButton("X");
+        this.jPanel2.add(botonEliminar);
     }//GEN-LAST:event_btnNuevaColumnaActionPerformed
 
     private void txtNombreTablaCreadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreTablaCreadaActionPerformed
