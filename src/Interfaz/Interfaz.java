@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.TreeMap;
 import javax.swing.JOptionPane;
+import javax.swing.table.TableColumn;
 
 /**
  *
@@ -59,18 +60,18 @@ public class Interfaz extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MiNoSQL");
 
-        jPanel1.setBackground(new java.awt.Color(254, 251, 244));
+        jPanel1.setBackground(new java.awt.Color(1, 22, 39));
 
-        boxEsquemas.setBackground(new java.awt.Color(95, 94, 60));
+        boxEsquemas.setBackground(new java.awt.Color(53, 60, 81));
         boxEsquemas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boxEsquemasActionPerformed(evt);
             }
         });
 
-        txtNombreEsquema.setBackground(new java.awt.Color(225, 228, 220));
+        txtNombreEsquema.setBackground(new java.awt.Color(255, 255, 255));
         txtNombreEsquema.setFont(new java.awt.Font("Bahnschrift", 0, 12)); // NOI18N
-        txtNombreEsquema.setForeground(new java.awt.Color(63, 62, 40));
+        txtNombreEsquema.setForeground(new java.awt.Color(1, 22, 39));
         txtNombreEsquema.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txtNombreEsquema.setText("Ingresa nombre del esquema");
         txtNombreEsquema.setToolTipText("Ingresa nombre del esquema");
@@ -87,20 +88,22 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
 
-        BtnNuevoEsquema.setBackground(new java.awt.Color(95, 94, 60));
+        BtnNuevoEsquema.setBackground(new java.awt.Color(52, 68, 80));
         BtnNuevoEsquema.setFont(new java.awt.Font("Bahnschrift", 1, 12)); // NOI18N
-        BtnNuevoEsquema.setForeground(new java.awt.Color(63, 62, 40));
+        BtnNuevoEsquema.setForeground(new java.awt.Color(255, 255, 255));
         BtnNuevoEsquema.setText("Nuevo Esquema");
+        BtnNuevoEsquema.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Bahnschrift", 1, 12), new java.awt.Color(254, 251, 244))); // NOI18N
         BtnNuevoEsquema.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnNuevoEsquemaActionPerformed(evt);
             }
         });
 
-        BtnBorrarEsquema.setBackground(new java.awt.Color(95, 94, 60));
+        BtnBorrarEsquema.setBackground(new java.awt.Color(52, 68, 80));
         BtnBorrarEsquema.setFont(new java.awt.Font("Bahnschrift", 1, 12)); // NOI18N
-        BtnBorrarEsquema.setForeground(new java.awt.Color(63, 62, 40));
+        BtnBorrarEsquema.setForeground(new java.awt.Color(255, 255, 255));
         BtnBorrarEsquema.setText("Borrar Esquema");
+        BtnBorrarEsquema.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Bahnschrift", 1, 12), new java.awt.Color(254, 251, 244))); // NOI18N
         BtnBorrarEsquema.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnBorrarEsquemaActionPerformed(evt);
@@ -134,9 +137,12 @@ public class Interfaz extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTablePrincipal);
         jTablePrincipal.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
-        BoxColumnas.setBackground(new java.awt.Color(95, 94, 60));
+        BoxColumnas.setBackground(new java.awt.Color(53, 60, 81));
         BoxColumnas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        txtDatoBuscar.setBackground(new java.awt.Color(255, 255, 255));
+        txtDatoBuscar.setFont(new java.awt.Font("Bahnschrift", 0, 12)); // NOI18N
+        txtDatoBuscar.setForeground(new java.awt.Color(1, 22, 39));
         txtDatoBuscar.setText("Ingrese Dato a Buscar");
         txtDatoBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -150,6 +156,9 @@ public class Interfaz extends javax.swing.JFrame {
 
         BtnCargarDatos.setText("Cargar Datos");
 
+        txtBusquedaSql.setBackground(new java.awt.Color(255, 255, 255));
+        txtBusquedaSql.setFont(new java.awt.Font("Bahnschrift", 0, 12)); // NOI18N
+        txtBusquedaSql.setForeground(new java.awt.Color(1, 22, 39));
         txtBusquedaSql.setText("Busqueda SQL");
         txtBusquedaSql.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -159,7 +168,7 @@ public class Interfaz extends javax.swing.JFrame {
 
         BtnBuscarSql.setText("Buscar");
 
-        boxTablas.setBackground(new java.awt.Color(95, 94, 60));
+        boxTablas.setBackground(new java.awt.Color(53, 60, 81));
         boxTablas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 boxTablasMouseClicked(evt);
@@ -171,9 +180,9 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
 
-        txtNombreTabla.setBackground(new java.awt.Color(225, 228, 220));
+        txtNombreTabla.setBackground(new java.awt.Color(255, 255, 255));
         txtNombreTabla.setFont(new java.awt.Font("Bahnschrift", 0, 12)); // NOI18N
-        txtNombreTabla.setForeground(new java.awt.Color(63, 62, 40));
+        txtNombreTabla.setForeground(new java.awt.Color(1, 22, 39));
         txtNombreTabla.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txtNombreTabla.setText("Ingresa Nombre de la Tabla");
         txtNombreTabla.setToolTipText("Ingresa Nombre de la Tabla");
@@ -188,20 +197,22 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
 
-        BtnNuevaTabla.setBackground(new java.awt.Color(95, 94, 60));
+        BtnNuevaTabla.setBackground(new java.awt.Color(52, 68, 80));
         BtnNuevaTabla.setFont(new java.awt.Font("Bahnschrift", 1, 12)); // NOI18N
-        BtnNuevaTabla.setForeground(new java.awt.Color(63, 62, 40));
+        BtnNuevaTabla.setForeground(new java.awt.Color(255, 255, 255));
         BtnNuevaTabla.setText("Nueva Tabla");
+        BtnNuevaTabla.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Bahnschrift", 1, 12), new java.awt.Color(254, 251, 244))); // NOI18N
         BtnNuevaTabla.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnNuevaTablaActionPerformed(evt);
             }
         });
 
-        BtnBorrarTabla.setBackground(new java.awt.Color(95, 94, 60));
+        BtnBorrarTabla.setBackground(new java.awt.Color(52, 68, 80));
         BtnBorrarTabla.setFont(new java.awt.Font("Bahnschrift", 1, 12)); // NOI18N
-        BtnBorrarTabla.setForeground(new java.awt.Color(63, 62, 40));
+        BtnBorrarTabla.setForeground(new java.awt.Color(255, 255, 255));
         BtnBorrarTabla.setText("Borrar Tabla");
+        BtnBorrarTabla.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Bahnschrift", 1, 12), new java.awt.Color(254, 251, 244))); // NOI18N
         BtnBorrarTabla.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnBorrarTablaActionPerformed(evt);
@@ -215,15 +226,6 @@ public class Interfaz extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(boxEsquemas, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtNombreEsquema, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(25, 25, 25)
-                        .addComponent(BtnNuevoEsquema)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(BtnBorrarEsquema)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(txtBusquedaSql)
@@ -244,15 +246,24 @@ public class Interfaz extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jScrollPane1)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(boxTablas, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtNombreTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(30, 30, 30)
-                                .addComponent(BtnNuevaTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(boxTablas, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtNombreTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(BtnNuevaTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(boxEsquemas, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtNombreEsquema, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(BtnNuevoEsquema, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(BtnBorrarTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 8, Short.MAX_VALUE)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(BtnBorrarTabla, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(BtnBorrarEsquema, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE))))
                         .addGap(22, 22, 22))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -355,20 +366,19 @@ public class Interfaz extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreEsquemaActionPerformed
 
-    //DEBEMOS CONDICIONAR ESTE BOTON, DE TAL MANERA QUE SI EL BOX DE ESQUEMA ESTA VACIO NO PUEDE CREAR TABLAS
-    // LUEGO CONDICIONAR LAS TABLAS SEGUN EL ESQUEMA SELECCIONADO
+    //DEBEMOS CONDICIONAR ESTE BOTON, DE TAL MANERA QUE SI EL BOX DE ESQUEMA ESTA VACIO NO PUEDE CREAR TABLAS //Listo
+    // LUEGO CONDICIONAR LAS TABLAS SEGUN EL ESQUEMA SELECCIONADO //Esto no se como hacerlo????
     // DE MANERA SILIMAR LAS  COLUMNAS DE ACUERDO A LA TABLA DONDE SE CREARON
 
     private void BtnNuevaTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNuevaTablaActionPerformed
         InterfazNuevaTabla creacionJTable = new InterfazNuevaTabla();
-        if (!txtNombreTabla.equals("")) {
+        if (!txtNombreTabla.equals("") && !boxTablas.getSize().equals(null)) {
             agregarTabla();
-
+            System.out.println(tablas.size());
         } else {
             JOptionPane.showMessageDialog(this, "Por favor ingrese un nombre.");
         }
 
-        //NECESITO ESTO DENTRO DE ESTA FUNCION PERO EL ERROR ANTES MENCIONADO NO ME DEJA X ESO ESTA COMENTADA!!
         creacionJTable.setVisible(true); //FUNCIONANDO CORRECTAMENTE
     }//GEN-LAST:event_BtnNuevaTablaActionPerformed
 
@@ -443,8 +453,10 @@ public class Interfaz extends javax.swing.JFrame {
     ArrayList<String> esquema = new ArrayList<>();
     ArrayList<Tablas> tablas = new ArrayList<>();
     Map<Integer, String> asignarId = new TreeMap<>();
+    //Tablas tablaX;
     int cont = 1;
     int cont2 = 0;
+    int contadorTablas = 0;
 
     public void asignar_id() {
 
@@ -481,6 +493,7 @@ public class Interfaz extends javax.swing.JFrame {
     }
 
     //Metodos jTable
+    //NO TOCAR!!!
     public void agregarTabla() {
         //InterfazNuevaTabla setNombre = new InterfazNuevaTabla();
         Tablas tablaX = new Tablas();
@@ -488,12 +501,11 @@ public class Interfaz extends javax.swing.JFrame {
         tablas.add(tablaX);
         boxTablas.addItem(tablaX.getNombre());
         txtNombreTabla.setText("");
-
+        System.out.println("Se agrego una tabla correctamente");
     }
 
     public void borrarTabla() {
         tablas.remove(tablas.size() - 1);
-        //tablas.remove(boxTablas.setSelectedItem(ABORT))
         boxTablas.removeItemAt(tablas.size());
     }
 
@@ -505,12 +517,29 @@ public class Interfaz extends javax.swing.JFrame {
             System.out.println(clave + "." + valor);
         });
     }
-    
-    public void nameColumnas(){
+
+    public void nameColumnas() {
         InterfazNuevaTabla obtenerNames = new InterfazNuevaTabla();
-        
-       BoxColumnas.addItem(obtenerNames.titulosColumnas.get(0));
-       
+
+        BoxColumnas.addItem(obtenerNames.titulosColumnas.get(0));
+
+    }
+    
+    //NO TOCAR!!!
+    public void crearColumnas(ArrayList<String> listaColumnas) { 
+        //InterfazNuevaTabla obtenerTitulosColumnas = new InterfazNuevaTabla();
+        System.out.println(listaColumnas.size());
+        System.out.println(tablas.size());
+        //System.out.println(obtenerTitulosColumnas.titulosColumnas.size());
+        //tablas.get(0).setNumColumnas(listaColumnas.size());
+        //System.out.println(tablas.get(0).getNumColumnas());
+        /*
+        for (int i = 0; i < tablas.get(contadorTablas).getNumColumnas(); i++) {
+            TableColumn tc = new TableColumn(i + 1, 80);
+            jTablePrincipal.addColumn(tc);
+        }
+        */
+        contadorTablas++;
     }
 
 }

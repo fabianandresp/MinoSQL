@@ -11,6 +11,7 @@ import java.awt.FlowLayout;
 import java.awt.TextField;
 import java.util.ArrayList;
 import javax.swing.JButton;
+import javax.swing.table.TableColumn;
 
 /**
  *
@@ -28,7 +29,7 @@ public class InterfazNuevaTabla extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-        this.setDefaultCloseOperation(this.DO_NOTHING_ON_CLOSE);
+        this.setDefaultCloseOperation(this.HIDE_ON_CLOSE);
         JLabelColum1.setEnabled(false);
         JLabelColum2.setEnabled(false);
         JLabelColum3.setEnabled(false);
@@ -67,8 +68,7 @@ public class InterfazNuevaTabla extends javax.swing.JFrame {
         btnBorrar4 = new javax.swing.JButton();
         btnBorrar5 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
+        setTitle("Creacion Columnas");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setForeground(new java.awt.Color(0, 0, 0));
@@ -255,7 +255,7 @@ public class InterfazNuevaTabla extends javax.swing.JFrame {
         titulosColumnas.add(nombreColumna);
         txtNombreColumna.setText("");
         System.out.println("**Se agrego una columna**");
-
+        
         //ESTO SE PUEDE ELIMINAR? 
         //Esto no esta funcionando bien aun no logro levantar el jTextField que despliegue el nombre!
         TextField mostrarColumnas = new TextField(txtNombreColumna.getText(), 20);
@@ -284,23 +284,28 @@ public class InterfazNuevaTabla extends javax.swing.JFrame {
                 btnBorrar3.setEnabled(true);
                 break;
             case 4:
-                JLabelColum4.setText(titulosColumnas.get(1));
+                JLabelColum4.setText(titulosColumnas.get(3));
                 JLabelColum4.setEnabled(true);
                 btnBorrar4.setEnabled(true);
                 break;
             case 5:
-                JLabelColum5.setText(titulosColumnas.get(1));
+                JLabelColum5.setText(titulosColumnas.get(4));
                 JLabelColum5.setEnabled(true);
                 btnBorrar5.setEnabled(true);
                 break;
         }
 
+        for (int i = 0; i < titulosColumnas.size(); i++) {
+            System.out.println(titulosColumnas.get(i));
+        }
+        
+        System.out.println(titulosColumnas.size());
     }//GEN-LAST:event_btnNuevaColumnaActionPerformed
 
     //NO SERA MEJOR CAMBIARLO POR UN JLABEL, QUE VAYA CAMBIANDO DE ACUERDO A LA ELECCION DEL USUARIO EN EL JBOX DE NOMBRE DE TABLAS?
     private void txtNombreTablaCreadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreTablaCreadaActionPerformed
         // = principal.tablas.get(principal.tablas.size());
-        //txtNombreTablaCreada.setText(principal.tablas.get(0).toString());
+        //txtNombreTablaCreada.setText(principal.tablas.get(principal.tablas.size()).toString());
     }//GEN-LAST:event_txtNombreTablaCreadaActionPerformed
 
     private void txtNombreTablaCreadaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreTablaCreadaFocusLost
@@ -354,10 +359,12 @@ public class InterfazNuevaTabla extends javax.swing.JFrame {
         titulosColumnas.remove(4);
         System.out.println("Se elimino una columnas");
     }//GEN-LAST:event_btnBorrar5ActionPerformed
-
+    
+    //NO TOCAR!!
     private void btnListoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListoActionPerformed
-        this.setVisible(false);
-       
+        principal.crearColumnas(titulosColumnas);
+        //this.setVisible(false);
+
     }//GEN-LAST:event_btnListoActionPerformed
 
     /**
