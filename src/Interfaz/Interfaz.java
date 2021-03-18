@@ -88,22 +88,22 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
 
-        BtnNuevoEsquema.setBackground(new java.awt.Color(52, 68, 80));
+        BtnNuevoEsquema.setBackground(new java.awt.Color(193, 240, 249));
         BtnNuevoEsquema.setFont(new java.awt.Font("Bahnschrift", 1, 12)); // NOI18N
-        BtnNuevoEsquema.setForeground(new java.awt.Color(255, 255, 255));
+        BtnNuevoEsquema.setForeground(new java.awt.Color(1, 22, 39));
         BtnNuevoEsquema.setText("Nuevo Esquema");
-        BtnNuevoEsquema.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Bahnschrift", 1, 12), new java.awt.Color(254, 251, 244))); // NOI18N
+        BtnNuevoEsquema.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Bahnschrift", 1, 12), new java.awt.Color(1, 22, 39))); // NOI18N
         BtnNuevoEsquema.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnNuevoEsquemaActionPerformed(evt);
             }
         });
 
-        BtnBorrarEsquema.setBackground(new java.awt.Color(52, 68, 80));
+        BtnBorrarEsquema.setBackground(new java.awt.Color(193, 240, 249));
         BtnBorrarEsquema.setFont(new java.awt.Font("Bahnschrift", 1, 12)); // NOI18N
-        BtnBorrarEsquema.setForeground(new java.awt.Color(255, 255, 255));
+        BtnBorrarEsquema.setForeground(new java.awt.Color(1, 22, 39));
         BtnBorrarEsquema.setText("Borrar Esquema");
-        BtnBorrarEsquema.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Bahnschrift", 1, 12), new java.awt.Color(254, 251, 244))); // NOI18N
+        BtnBorrarEsquema.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Bahnschrift", 1, 12), new java.awt.Color(1, 22, 39))); // NOI18N
         BtnBorrarEsquema.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnBorrarEsquemaActionPerformed(evt);
@@ -150,11 +150,23 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
 
+        BtnBuscarDato.setBackground(new java.awt.Color(193, 240, 249));
+        BtnBuscarDato.setFont(new java.awt.Font("Bahnschrift", 1, 12)); // NOI18N
+        BtnBuscarDato.setForeground(new java.awt.Color(1, 22, 39));
         BtnBuscarDato.setText("Buscar");
+        BtnBuscarDato.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(1, 22, 39))); // NOI18N
 
+        BtnBorrarDato.setBackground(new java.awt.Color(193, 240, 249));
+        BtnBorrarDato.setFont(new java.awt.Font("Bahnschrift", 1, 12)); // NOI18N
+        BtnBorrarDato.setForeground(new java.awt.Color(1, 22, 39));
         BtnBorrarDato.setText("Borrar");
+        BtnBorrarDato.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(1, 22, 39))); // NOI18N
 
+        BtnCargarDatos.setBackground(new java.awt.Color(193, 240, 249));
+        BtnCargarDatos.setFont(new java.awt.Font("Bahnschrift", 1, 12)); // NOI18N
+        BtnCargarDatos.setForeground(new java.awt.Color(1, 22, 39));
         BtnCargarDatos.setText("Cargar Datos");
+        BtnCargarDatos.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(1, 22, 39))); // NOI18N
 
         txtBusquedaSql.setBackground(new java.awt.Color(255, 255, 255));
         txtBusquedaSql.setFont(new java.awt.Font("Bahnschrift", 0, 12)); // NOI18N
@@ -166,7 +178,11 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
 
+        BtnBuscarSql.setBackground(new java.awt.Color(193, 240, 249));
+        BtnBuscarSql.setFont(new java.awt.Font("Bahnschrift", 1, 12)); // NOI18N
+        BtnBuscarSql.setForeground(new java.awt.Color(1, 22, 39));
         BtnBuscarSql.setText("Buscar");
+        BtnBuscarSql.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(1, 22, 39))); // NOI18N
 
         boxTablas.setBackground(new java.awt.Color(53, 60, 81));
         boxTablas.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -197,22 +213,22 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
 
-        BtnNuevaTabla.setBackground(new java.awt.Color(52, 68, 80));
+        BtnNuevaTabla.setBackground(new java.awt.Color(193, 240, 249));
         BtnNuevaTabla.setFont(new java.awt.Font("Bahnschrift", 1, 12)); // NOI18N
-        BtnNuevaTabla.setForeground(new java.awt.Color(255, 255, 255));
+        BtnNuevaTabla.setForeground(new java.awt.Color(1, 22, 39));
         BtnNuevaTabla.setText("Nueva Tabla");
-        BtnNuevaTabla.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Bahnschrift", 1, 12), new java.awt.Color(254, 251, 244))); // NOI18N
+        BtnNuevaTabla.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Bahnschrift", 1, 12), new java.awt.Color(1, 22, 39))); // NOI18N
         BtnNuevaTabla.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnNuevaTablaActionPerformed(evt);
             }
         });
 
-        BtnBorrarTabla.setBackground(new java.awt.Color(52, 68, 80));
+        BtnBorrarTabla.setBackground(new java.awt.Color(193, 240, 249));
         BtnBorrarTabla.setFont(new java.awt.Font("Bahnschrift", 1, 12)); // NOI18N
-        BtnBorrarTabla.setForeground(new java.awt.Color(255, 255, 255));
+        BtnBorrarTabla.setForeground(new java.awt.Color(1, 22, 39));
         BtnBorrarTabla.setText("Borrar Tabla");
-        BtnBorrarTabla.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Bahnschrift", 1, 12), new java.awt.Color(254, 251, 244))); // NOI18N
+        BtnBorrarTabla.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Bahnschrift", 1, 12), new java.awt.Color(1, 22, 39))); // NOI18N
         BtnBorrarTabla.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnBorrarTablaActionPerformed(evt);
@@ -528,11 +544,15 @@ public class Interfaz extends javax.swing.JFrame {
     //NO TOCAR!!!
     public void crearColumnas(ArrayList<String> listaColumnas) { 
         //InterfazNuevaTabla obtenerTitulosColumnas = new InterfazNuevaTabla();
+        ArrayList<Tablas> tablas = new ArrayList<>();
+        this.tablas = tablas;
+        
         System.out.println(listaColumnas.size());
         System.out.println(tablas.size());
         //System.out.println(obtenerTitulosColumnas.titulosColumnas.size());
-        //tablas.get(0).setNumColumnas(listaColumnas.size());
-        //System.out.println(tablas.get(0).getNumColumnas());
+        //int varTablas = tablas.indexOf(tablas.get(contadorTablas));
+        //tablas.get(contadorTablas).setNumColumnas(listaColumnas.size());
+        //System.out.println(tablas.get(contadorTablas).getNumColumnas());
         /*
         for (int i = 0; i < tablas.get(contadorTablas).getNumColumnas(); i++) {
             TableColumn tc = new TableColumn(i + 1, 80);

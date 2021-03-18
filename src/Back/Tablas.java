@@ -13,6 +13,7 @@ public class Tablas {
     
     String nombre; 
     int numColumnas;
+    int tamTablas;
 
     public Tablas() {}
     
@@ -40,6 +41,14 @@ public class Tablas {
     @Override
     public String toString() {
         return  nombre + "." + numColumnas;
+    }
+
+    public int getTamTablas() {
+        return tamTablas;
+    }
+
+    public void setTamTablas(int tamTablas) {
+        this.tamTablas = tamTablas;
     }
     
     
