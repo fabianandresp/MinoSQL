@@ -5,19 +5,12 @@
  */
 package Back;
 
-import Interfaz.Interfaz;
-
 /**
  *
  * @author pimie
  */
-public class Tester {
-
-    public static void main(String[] args) {
-
-        Controlador nuevo = new Controlador();
-        nuevo.iniciar();
-
-    }
-
+public class Columna {
+    
+    String Nombre;
+    
 }

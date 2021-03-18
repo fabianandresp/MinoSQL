@@ -23,7 +23,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" alignment="0" pref="288" max="32767" attributes="0"/>
+          <Component id="jPanel1" alignment="0" pref="296" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -127,11 +127,8 @@
                           <Component id="JLabelColum1" max="32767" attributes="0"/>
                           <Component id="JLabelColum2" alignment="0" pref="118" max="32767" attributes="0"/>
                           <Component id="JLabelColum5" alignment="1" pref="118" max="32767" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                              <Component id="JLabelColum3" pref="112" max="32767" attributes="0"/>
-                          </Group>
                           <Component id="JLabelColum4" alignment="0" max="32767" attributes="0"/>
+                          <Component id="JLabelColum3" alignment="0" pref="118" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -146,9 +143,9 @@
                       <Component id="JLabelColum2" min="-2" pref="26" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="JLabelColum3" min="-2" pref="26" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="JLabelColum4" min="-2" pref="26" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                       <Component id="JLabelColum5" min="-2" pref="26" max="-2" attributes="0"/>
                       <EmptySpace pref="12" max="32767" attributes="0"/>
                   </Group>

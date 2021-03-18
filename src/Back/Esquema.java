@@ -5,10 +5,15 @@
  */
 package Back;
 
+import java.util.ArrayList;
+
 
 public class Esquema {
 
     String nombre;
+    int esquema_ID;
+    ArrayList <Tabla> tablas = new ArrayList<>();
+    
 
     public Esquema() {
 
@@ -26,10 +31,27 @@ public class Esquema {
         this.nombre = nombre;
     }
 
+    public void setEsquema_ID(int esquema_ID) {
+        this.esquema_ID = esquema_ID;
+    }
+
+    public void setTablas(ArrayList<Tabla> tablas) {
+        this.tablas = tablas;
+    }
+
+    public int getEsquema_ID() {
+        return esquema_ID;
+    }
+
+    public ArrayList<Tabla> getTablas() {
+        return tablas;
+    }
+
     @Override
     public String toString() {
         return   nombre ;
     }
-
+    
+    
     
 }

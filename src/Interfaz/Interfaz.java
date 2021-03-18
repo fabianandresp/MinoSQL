@@ -5,8 +5,9 @@
  */
 package Interfaz;
 
+import Back.Controlador;
 import Back.Esquema;
-import Back.Tablas;
+import Back.Tabla;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.TreeMap;
@@ -23,10 +24,17 @@ public class Interfaz extends javax.swing.JFrame {
     la interfaz secundaria a esta principal me lanza el error: java.lang.StackOverflowError */ //OTRA VEZ...! :(
     //InterfazNuevaTabla creacionJTable = new InterfazNuevaTabla(); // DESCOMENTAR ESTA LINEA Y PROBAR
     //NOTA ADICIONAL: Revisar linea 341 
-    public Interfaz() {
+    Controlador controlador;
+
+    public Interfaz(Controlador controlador) {
+        this.controlador = controlador;
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+    }
+
+    private Interfaz() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -346,7 +354,6 @@ public class Interfaz extends javax.swing.JFrame {
     private void BtnNuevoEsquemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNuevoEsquemaActionPerformed
         if (!" ".equals(txtNombreEsquema.getText())) {
             agregarEsquema();
-            asignar_id();
 
         } else {
             JOptionPane.showMessageDialog(this, "Por favor digite un nombre");
@@ -362,7 +369,7 @@ public class Interfaz extends javax.swing.JFrame {
     private void BtnBorrarEsquemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBorrarEsquemaActionPerformed
         int confirmacion = JOptionPane.showConfirmDialog(this, "Seguro desea eliminar un esquema");
         if (JOptionPane.YES_OPTION == confirmacion) {
-            borrarEsquema();
+//            borrarEsquema();
             JOptionPane.showMessageDialog(this, " Se ha eliminado el esquema ");
         } else {
             JOptionPane.showMessageDialog(this, " No se ha elimnado nada ");
@@ -387,15 +394,16 @@ public class Interfaz extends javax.swing.JFrame {
     // DE MANERA SILIMAR LAS  COLUMNAS DE ACUERDO A LA TABLA DONDE SE CREARON
 
     private void BtnNuevaTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNuevaTablaActionPerformed
-        InterfazNuevaTabla creacionJTable = new InterfazNuevaTabla();
+        // InterfazNuevaTabla creacionJTable = new InterfazNuevaTabla();
+
         if (!txtNombreTabla.equals("") && !boxTablas.getSize().equals(null)) {
             agregarTabla();
-            System.out.println(tablas.size());
+
         } else {
             JOptionPane.showMessageDialog(this, "Por favor ingrese un nombre.");
         }
 
-        creacionJTable.setVisible(true); //FUNCIONANDO CORRECTAMENTE
+        //creacionJTable.setVisible(true); //FUNCIONANDO CORRECTAMENTE
     }//GEN-LAST:event_BtnNuevaTablaActionPerformed
 
     private void txtNombreTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreTablaActionPerformed
@@ -407,35 +415,14 @@ public class Interfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_boxTablasMouseClicked
 
     private void BtnBorrarTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBorrarTablaActionPerformed
-        borrarTabla();
+        // borrarTabla();
     }//GEN-LAST:event_BtnBorrarTablaActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -466,26 +453,26 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JTextField txtNombreTabla;
     // End of variables declaration//GEN-END:variables
 
-    ArrayList<String> esquema = new ArrayList<>();
-    ArrayList<Tablas> tablas = new ArrayList<>();
-    Map<Integer, String> asignarId = new TreeMap<>();
+    ArrayList<String> esquema;
+
     //Tablas tablaX;
     int cont = 1;
     int cont2 = 0;
     int contadorTablas = 0;
 
-    public void asignar_id() {
-
-        asignarId.put(cont, esquema.get(cont2));
-        cont++;
-        cont2++;
-        System.out.println(asignarId.size());
-    }
-
+//    public void asignar_id() {
+//
+//        asignarId.put(cont, esquema.get(cont2));
+//        cont++;
+//        cont2++;
+//        System.out.println(asignarId.size());
+//    }
     public void agregarEsquema() {
         String name = txtNombreEsquema.getText();
-
-        esquema.add(name);
+        Esquema nuevo = new Esquema();
+        nuevo.setNombre(name);
+        nuevo.setEsquema_ID(SOMEBITS);
+        controlador.agregarEsquema(nuevo);
         boxEsquemas.addItem(name);
         txtNombreEsquema.setText(" ");
         System.out.println(" Se ha guardado el esquema con exito ");
@@ -497,69 +484,60 @@ public class Interfaz extends javax.swing.JFrame {
 
     }
 
-    public void borrarEsquema() {
-
-        esquema.remove(esquema.size() - 1);
-        boxEsquemas.removeItemAt(esquema.size());
-        asignarId.remove(cont);
-        System.out.println(asignarId.size() - 1 + " Tamaño del MAP ");
-        cont--;
-        cont2--;
-
-    }
-
-    //Metodos jTable
-    //NO TOCAR!!!
+//    public void borrarEsquema() {
+//
+//        esquema.remove(esquema.size() - 1);
+//        boxEsquemas.removeItemAt(esquema.size());
+//        asignarId.remove(cont);
+//        System.out.println(asignarId.size() - 1 + " Tamaño del MAP ");
+//        cont--;
+//        cont2--;
+//
+//    }
+   
     public void agregarTabla() {
         //InterfazNuevaTabla setNombre = new InterfazNuevaTabla();
-        Tablas tablaX = new Tablas();
-        tablaX.setNombre(txtNombreTabla.getText());
-        tablas.add(tablaX);
-        boxTablas.addItem(tablaX.getNombre());
+        Tabla tabla = new Tabla();
+        tabla.setNombre(txtNombreTabla.getText());
+        Esquema esquema = controlador.getEsquemas().get(boxEsquemas.getSelectedIndex());
+        esquema.getTablas().add(tabla);
+
+        boxTablas.addItem(tabla.getNombre());
         txtNombreTabla.setText("");
         System.out.println("Se agrego una tabla correctamente");
+
     }
 
-    public void borrarTabla() {
-        tablas.remove(tablas.size() - 1);
-        boxTablas.removeItemAt(tablas.size());
-    }
-
-    //METODO QUE PODEMOS UTILIZAR PARA OBTENER DATOS DEL MAP, SI ES NECESARIO
-    public void obtenerDatosMap() {
-        asignarId.entrySet().forEach((datosMap) -> {
-            Integer clave = datosMap.getKey();
-            String valor = datosMap.getValue();
-            System.out.println(clave + "." + valor);
-        });
-    }
-
+//    public void borrarTabla() {
+//        tablas.remove(tablas.size() - 1);
+//        boxTablas.removeItemAt(tablas.size());
+//    }
     public void nameColumnas() {
         InterfazNuevaTabla obtenerNames = new InterfazNuevaTabla();
 
         BoxColumnas.addItem(obtenerNames.titulosColumnas.get(0));
 
     }
-    
+
     //NO TOCAR!!!
-    public void crearColumnas(ArrayList<String> listaColumnas) { 
-        //InterfazNuevaTabla obtenerTitulosColumnas = new InterfazNuevaTabla();
-        ArrayList<Tablas> tablas = new ArrayList<>();
-        this.tablas = tablas;
-        
-        System.out.println(listaColumnas.size());
-        System.out.println(tablas.size());
-        //System.out.println(obtenerTitulosColumnas.titulosColumnas.size());
-        //int varTablas = tablas.indexOf(tablas.get(contadorTablas));
-        //tablas.get(contadorTablas).setNumColumnas(listaColumnas.size());
-        //System.out.println(tablas.get(contadorTablas).getNumColumnas());
-        /*
+//    public void crearColumnas(ArrayList<String> listaColumnas) {
+//        //InterfazNuevaTabla obtenerTitulosColumnas = new InterfazNuevaTabla();
+//        ArrayList<Tablas> tablas = new ArrayList<>();
+//        this.tablas = tablas;
+//
+//        System.out.println(listaColumnas.size());
+//        System.out.println(tablas.size());
+    //System.out.println(obtenerTitulosColumnas.titulosColumnas.size());
+    //int varTablas = tablas.indexOf(tablas.get(contadorTablas));
+    //tablas.get(contadorTablas).setNumColumnas(listaColumnas.size());
+    //System.out.println(tablas.get(contadorTablas).getNumColumnas());
+    /*
         for (int i = 0; i < tablas.get(contadorTablas).getNumColumnas(); i++) {
             TableColumn tc = new TableColumn(i + 1, 80);
             jTablePrincipal.addColumn(tc);
         }
-        */
-        contadorTablas++;
-    }
-
+     */
+//        contadorTablas++;
 }
+
+//}

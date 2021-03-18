@@ -22,7 +22,7 @@ public class InterfazNuevaTabla extends javax.swing.JFrame {
     /**
      * Creates new form InterfazNuevaTabla
      */
-    Interfaz principal = new Interfaz();
+    
     ArrayList<String> titulosColumnas = new ArrayList<>();
 
     public InterfazNuevaTabla() {
@@ -300,7 +300,7 @@ public class InterfazNuevaTabla extends javax.swing.JFrame {
         }
         
         System.out.println(titulosColumnas.size());
-        System.out.println(principal.tablas.size());
+        
     }//GEN-LAST:event_btnNuevaColumnaActionPerformed
 
     //NO SERA MEJOR CAMBIARLO POR UN JLABEL, QUE VAYA CAMBIANDO DE ACUERDO A LA ELECCION DEL USUARIO EN EL JBOX DE NOMBRE DE TABLAS?
@@ -363,9 +363,9 @@ public class InterfazNuevaTabla extends javax.swing.JFrame {
     
     //NO TOCAR!!
     private void btnListoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListoActionPerformed
-        principal.crearColumnas(titulosColumnas);
-        System.out.println(principal.tablas.size());
-        //this.setVisible(false);
+//        principal.crearColumnas(titulosColumnas);
+//        System.out.println(principal.tablas.size());
+//        //this.setVisible(false);
 
     }//GEN-LAST:event_btnListoActionPerformed
 
