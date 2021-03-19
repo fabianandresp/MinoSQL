@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Back;
+package BackEnd;
 
-import Interfaz.Interfaz;
+import FrontEnd.MainWindow;
 
 /**
  *
  * @author pimie
  */
-public class Tester {
+public class Iniciar {
 
     public static void main(String[] args) {
 

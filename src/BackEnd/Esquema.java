@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Back;
+package BackEnd;
 
 import java.util.ArrayList;
 
@@ -11,16 +11,19 @@ import java.util.ArrayList;
 public class Esquema {
 
     String nombre;
-    int esquema_ID;
+    Integer esquema_ID;
     ArrayList <Tabla> tablas = new ArrayList<>();
     
 
-    public Esquema() {
+   
 
+    public Esquema( Integer esquema_ID,String nombre) {
+        this.nombre = nombre;
+        this.esquema_ID = esquema_ID;
     }
 
-    public Esquema(String nombre) {
-        this.nombre = nombre;
+    public Esquema() {
+       
     }
 
     public String getNombre() {
@@ -39,12 +42,15 @@ public class Esquema {
         this.tablas = tablas;
     }
 
-    public int getEsquema_ID() {
+    public Integer getEsquema_ID() {
         return esquema_ID;
     }
 
     public ArrayList<Tabla> getTablas() {
         return tablas;
+    }
+    public void eliminarTabla(){
+        tablas.clear();
     }
 
     @Override

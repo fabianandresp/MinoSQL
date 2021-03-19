@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Back;
+package BackEnd;
 
-import Interfaz.Interfaz;
+import FrontEnd.MainWindow;
+import FrontEnd.NuevaTabla;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,15 +17,20 @@ import java.util.Map;
 public class Controlador {
 
     Map<Integer, Esquema> esquemas = new HashMap<>();
-
+    Integer contador=1;
     public void iniciar() {
 
-        Interfaz mino_SQL = new Interfaz(this);
+        MainWindow mino_SQL = new MainWindow(this);
         mino_SQL.setVisible(true);
+        NuevaTabla nueva = new NuevaTabla(this);
+        nueva.setVisible(true);
+        
 
     }
     public void agregarEsquema(Esquema esquema){
-        
+       
+       esquemas.put(contador, esquema);
+       contador++;
     }
 
     public Map<Integer, Esquema> getEsquemas() {

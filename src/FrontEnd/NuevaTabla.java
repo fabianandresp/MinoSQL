@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Interfaz;
+package FrontEnd;
 
+import BackEnd.Controlador;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
@@ -17,15 +18,16 @@ import javax.swing.table.TableColumn;
  *
  * @author pimie
  */
-public class InterfazNuevaTabla extends javax.swing.JFrame {
+public class NuevaTabla extends javax.swing.JFrame {
 
     /**
-     * Creates new form InterfazNuevaTabla
+     * Creates new form NuevaTabla
      */
     
     ArrayList<String> titulosColumnas = new ArrayList<>();
-
-    public InterfazNuevaTabla() {
+    Controlador controlador;
+    public NuevaTabla(Controlador controlador) {
+        this.controlador = controlador;
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
@@ -42,6 +44,10 @@ public class InterfazNuevaTabla extends javax.swing.JFrame {
         btnBorrar5.setEnabled(false);
     }
 
+    NuevaTabla() {
+        //To change body of generated methods, choose Tools | Templates.
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -54,7 +60,6 @@ public class InterfazNuevaTabla extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         txtNombreColumna = new javax.swing.JTextField();
         btnListo = new javax.swing.JButton();
-        txtNombreTablaCreada = new javax.swing.JTextField();
         btnNuevaColumna = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         JLabelColum1 = new javax.swing.JLabel();
@@ -67,6 +72,7 @@ public class InterfazNuevaTabla extends javax.swing.JFrame {
         btnBorrar3 = new javax.swing.JButton();
         btnBorrar4 = new javax.swing.JButton();
         btnBorrar5 = new javax.swing.JButton();
+        jLabelNombreTabla = new javax.swing.JLabel();
 
         setTitle("Creacion Columnas");
 
@@ -98,25 +104,6 @@ public class InterfazNuevaTabla extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnListo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 330, 80, -1));
-
-        txtNombreTablaCreada.setEditable(false);
-        txtNombreTablaCreada.setBackground(new java.awt.Color(255, 255, 255));
-        txtNombreTablaCreada.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtNombreTablaCreada.setText("Nombre de la Tabla");
-        txtNombreTablaCreada.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtNombreTablaCreadaFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtNombreTablaCreadaFocusLost(evt);
-            }
-        });
-        txtNombreTablaCreada.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreTablaCreadaActionPerformed(evt);
-            }
-        });
-        jPanel1.add(txtNombreTablaCreada, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 130, 30));
 
         btnNuevaColumna.setText("Nueva Columna");
         btnNuevaColumna.addActionListener(new java.awt.event.ActionListener() {
@@ -151,10 +138,8 @@ public class InterfazNuevaTabla extends javax.swing.JFrame {
                     .addComponent(JLabelColum1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(JLabelColum2, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
                     .addComponent(JLabelColum5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(JLabelColum3, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE))
-                    .addComponent(JLabelColum4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(JLabelColum4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(JLabelColum3, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -168,7 +153,7 @@ public class InterfazNuevaTabla extends javax.swing.JFrame {
                 .addComponent(JLabelColum3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(JLabelColum4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(12, 12, 12)
                 .addComponent(JLabelColum5, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(12, Short.MAX_VALUE))
         );
@@ -214,12 +199,13 @@ public class InterfazNuevaTabla extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnBorrar5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 270, -1, 30));
+        jPanel1.add(jLabelNombreTabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 16, 130, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -249,9 +235,17 @@ public class InterfazNuevaTabla extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreColumnaActionPerformed
 
-    //CONDICIONAR LA ENTRADA DE TEXTO SOLO A LETRA MAYUSCULA (SE VEN MEJOR LOS NOMBRES DE LAS TABLAS CON ESTE TIPO DE LETRA) 
+    //CONDICIONAR LA ENTRADA DE TEXTO SOLO A LETRA MAYUSCULA (SE VEN MEJOR LOS NOMBRES DE LAS TABLAS CON ESTE TIPO DE LETRA)
+    // SE DEBEN CARGAR LOS NOMBRES DE LAS COLUMNAS AL ARRAYLIST QUE ESTA EN LA CLASE TABLA
+    // PARA CONDICIONAR DOND SE CREAN HAY QUE ESCOGER PRIMERO EL ESQUEMA DONDE SE CREARAN, ESTO SE HACE LLAMANDO AL CONTROLADOR.GETESQUEMAS().GET(BOXESQUEMAS.GETSELECTIONINDEX()
+    // LUEGO SE DEBE OBTENER LA TABLA DEL ARRAYLIST DE MANERA SIMILAR, EL ID DE LAS TABLAS SE SACA DEL MISMO BOX
+    // EL ID DE LAS COLUMNAS SE SACA DEL BOX DE LAS TABLAS MAINWINDOW.BOXTABLAS.GETSELECTIONINDEX()
+    // SE PUEDE UTILIZAR EL ARRAYLIST TEMPORAL Y ENVIARLO CLONADO AL ARRAYLIST DE LA CLASE TABLA.
+    // FIJARSE EN LOS PARAMETROS
+    // PORFA CAMBIAR LOS COLORES DE LOS BOX! PORFA PORFA JAJA 
     private void btnNuevaColumnaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevaColumnaActionPerformed
         String nombreColumna = txtNombreColumna.getText();
+        
         titulosColumnas.add(nombreColumna);
         txtNombreColumna.setText("");
         System.out.println("**Se agrego una columna**");
@@ -303,28 +297,6 @@ public class InterfazNuevaTabla extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnNuevaColumnaActionPerformed
 
-    //NO SERA MEJOR CAMBIARLO POR UN JLABEL, QUE VAYA CAMBIANDO DE ACUERDO A LA ELECCION DEL USUARIO EN EL JBOX DE NOMBRE DE TABLAS?
-    private void txtNombreTablaCreadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreTablaCreadaActionPerformed
-        // = principal.tablas.get(principal.tablas.size());
-        //txtNombreTablaCreada.setText(principal.tablas.get(principal.tablas.size()).toString());
-    }//GEN-LAST:event_txtNombreTablaCreadaActionPerformed
-
-    private void txtNombreTablaCreadaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreTablaCreadaFocusLost
-
-        if (txtNombreTablaCreada.getText().equals("")) {
-            txtNombreTablaCreada.setText("Ingrese el nombre de la Tabla");
-            txtNombreTablaCreada.setForeground(new Color(153, 153, 153));
-        }
-    }//GEN-LAST:event_txtNombreTablaCreadaFocusLost
-
-    private void txtNombreTablaCreadaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreTablaCreadaFocusGained
-
-        if (txtNombreTablaCreada.getText().equals("Ingrese el nombre de la Tabla")) {
-            txtNombreTablaCreada.setText("");
-            txtNombreTablaCreada.setForeground(new Color(153, 153, 153));
-        }
-    }//GEN-LAST:event_txtNombreTablaCreadaFocusGained
-
     private void btnBorrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrar1ActionPerformed
         JLabelColum1.setText(null);
         btnBorrar1.setEnabled(false);
@@ -363,10 +335,9 @@ public class InterfazNuevaTabla extends javax.swing.JFrame {
     
     //NO TOCAR!!
     private void btnListoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListoActionPerformed
-//        principal.crearColumnas(titulosColumnas);
-//        System.out.println(principal.tablas.size());
-//        //this.setVisible(false);
-
+        
+        controlador.getEsquemas().get(MainWindow.boxEsquemas.getSelectedIndex());
+        
     }//GEN-LAST:event_btnListoActionPerformed
 
     /**
@@ -386,20 +357,21 @@ public class InterfazNuevaTabla extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InterfazNuevaTabla.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NuevaTabla.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InterfazNuevaTabla.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NuevaTabla.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InterfazNuevaTabla.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NuevaTabla.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InterfazNuevaTabla.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NuevaTabla.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InterfazNuevaTabla().setVisible(true);
+                new NuevaTabla().setVisible(true);
             }
         });
     }
@@ -417,9 +389,9 @@ public class InterfazNuevaTabla extends javax.swing.JFrame {
     private javax.swing.JButton btnBorrar5;
     private javax.swing.JButton btnListo;
     private javax.swing.JButton btnNuevaColumna;
+    public static javax.swing.JLabel jLabelNombreTabla;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField txtNombreColumna;
-    private javax.swing.JTextField txtNombreTablaCreada;
     // End of variables declaration//GEN-END:variables
 }

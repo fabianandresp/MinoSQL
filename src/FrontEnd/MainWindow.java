@@ -3,37 +3,36 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Interfaz;
+package FrontEnd;
 
-import Back.Controlador;
-import Back.Esquema;
-import Back.Tabla;
+import BackEnd.Controlador;
+import BackEnd.Esquema;
+import BackEnd.Tabla;
 import java.util.ArrayList;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.Collection;
 import javax.swing.JOptionPane;
-import javax.swing.table.TableColumn;
 
 /**
  *
  * @author pimie
  */
-public class Interfaz extends javax.swing.JFrame {
+public class MainWindow extends javax.swing.JFrame {
 
     /* **FABIAN IMPORTANTE** al realizar esta instancia he intentar vincular 
     la interfaz secundaria a esta principal me lanza el error: java.lang.StackOverflowError */ //OTRA VEZ...! :(
-    //InterfazNuevaTabla creacionJTable = new InterfazNuevaTabla(); // DESCOMENTAR ESTA LINEA Y PROBAR
+    //InterfazNuevaTabla creacionJTable = new NuevaTabla(); // DESCOMENTAR ESTA LINEA Y PROBAR
     //NOTA ADICIONAL: Revisar linea 341 
     Controlador controlador;
 
-    public Interfaz(Controlador controlador) {
+    public MainWindow(Controlador controlador) {
+
         this.controlador = controlador;
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
     }
 
-    private Interfaz() {
+    private MainWindow() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -193,6 +192,11 @@ public class Interfaz extends javax.swing.JFrame {
         BtnBuscarSql.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(1, 22, 39))); // NOI18N
 
         boxTablas.setBackground(new java.awt.Color(53, 60, 81));
+        boxTablas.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                boxTablasItemStateChanged(evt);
+            }
+        });
         boxTablas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 boxTablasMouseClicked(evt);
@@ -369,7 +373,7 @@ public class Interfaz extends javax.swing.JFrame {
     private void BtnBorrarEsquemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBorrarEsquemaActionPerformed
         int confirmacion = JOptionPane.showConfirmDialog(this, "Seguro desea eliminar un esquema");
         if (JOptionPane.YES_OPTION == confirmacion) {
-//            borrarEsquema();
+            borrarEsquema();
             JOptionPane.showMessageDialog(this, " Se ha eliminado el esquema ");
         } else {
             JOptionPane.showMessageDialog(this, " No se ha elimnado nada ");
@@ -394,7 +398,7 @@ public class Interfaz extends javax.swing.JFrame {
     // DE MANERA SILIMAR LAS  COLUMNAS DE ACUERDO A LA TABLA DONDE SE CREARON
 
     private void BtnNuevaTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNuevaTablaActionPerformed
-        // InterfazNuevaTabla creacionJTable = new InterfazNuevaTabla();
+        // NuevaTabla creacionJTable = new NuevaTabla();
 
         if (!txtNombreTabla.equals("") && !boxTablas.getSize().equals(null)) {
             agregarTabla();
@@ -415,8 +419,12 @@ public class Interfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_boxTablasMouseClicked
 
     private void BtnBorrarTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBorrarTablaActionPerformed
-        // borrarTabla();
+        borrarTabla();
     }//GEN-LAST:event_BtnBorrarTablaActionPerformed
+
+    private void boxTablasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_boxTablasItemStateChanged
+
+    }//GEN-LAST:event_boxTablasItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -427,7 +435,7 @@ public class Interfaz extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Interfaz().setVisible(true);
+                new MainWindow().setVisible(true);
             }
         });
     }
@@ -442,8 +450,8 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JButton BtnCargarDatos;
     private javax.swing.JButton BtnNuevaTabla;
     private javax.swing.JButton BtnNuevoEsquema;
-    private javax.swing.JComboBox<String> boxEsquemas;
-    private javax.swing.JComboBox<String> boxTablas;
+    public static javax.swing.JComboBox<String> boxEsquemas;
+    public static javax.swing.JComboBox<String> boxTablas;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTablePrincipal;
@@ -454,6 +462,7 @@ public class Interfaz extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     ArrayList<String> esquema;
+    Integer contador = 1;
 
     //Tablas tablaX;
     int cont = 1;
@@ -469,59 +478,71 @@ public class Interfaz extends javax.swing.JFrame {
 //    }
     public void agregarEsquema() {
         String name = txtNombreEsquema.getText();
-        Esquema nuevo = new Esquema();
+        Esquema nuevo = new Esquema(boxEsquemas.getSelectedIndex() + 1, name);
         nuevo.setNombre(name);
-        nuevo.setEsquema_ID(SOMEBITS);
+        nuevo.setEsquema_ID(boxEsquemas.getSelectedIndex() + 1);
         controlador.agregarEsquema(nuevo);
         boxEsquemas.addItem(name);
         txtNombreEsquema.setText(" ");
         System.out.println(" Se ha guardado el esquema con exito ");
+        System.out.println("ID: " + nuevo.getEsquema_ID() + "nombre: " + nuevo.getNombre());
+        System.out.println(controlador.getEsquemas().size());
+        //contador++;
 
-        for (int i = 0; i < esquema.size(); i++) {
-            System.out.println(" NOMBRES DE ESQUEMAS CREADO " + esquema.get((i)));
+//        for (int i = 0; i < controlador.getEsquemas().size(); i++) {
+//            System.out.println(" NOMBRES DE ESQUEMAS CREADO " +controlador.getEsquemas().get(contador).getEsquema_ID()+ controlador.getEsquemas().get(contador).getNombre());
+//
+//        }
+    }
 
+    public void borrarEsquema() {
+        if (boxTablas != null) {
+            // FALTA AGREGAR QUE SE BORREN LAS TABLAS ASOCIADAS AL ESQUEMA 
+            controlador.getEsquemas().remove(controlador.getEsquemas().size() - 1);
+            boxEsquemas.removeItemAt(controlador.getEsquemas().size());
+
+            System.out.println(controlador.getEsquemas().size() + " Tamaño del MAP ");
+        } else {
+            controlador.getEsquemas().remove(controlador.getEsquemas().size() - 1);
+            boxEsquemas.removeItemAt(controlador.getEsquemas().size());
+
+            System.out.println(controlador.getEsquemas().size() + " Tamaño del MAP ");
+            //contador--;
         }
-
     }
 
-//    public void borrarEsquema() {
-//
-//        esquema.remove(esquema.size() - 1);
-//        boxEsquemas.removeItemAt(esquema.size());
-//        asignarId.remove(cont);
-//        System.out.println(asignarId.size() - 1 + " Tamaño del MAP ");
-//        cont--;
-//        cont2--;
-//
-//    }
-   
     public void agregarTabla() {
-        //InterfazNuevaTabla setNombre = new InterfazNuevaTabla();
-        Tabla tabla = new Tabla();
+        //InterfazNuevaTabla setNombre = new NuevaTabla();
+        String nombreTabla = txtNombreTabla.getText();
+        Tabla tabla = new Tabla(boxTablas.getSelectedIndex(),nombreTabla);
         tabla.setNombre(txtNombreTabla.getText());
-        Esquema esquema = controlador.getEsquemas().get(boxEsquemas.getSelectedIndex());
-        esquema.getTablas().add(tabla);
+        Esquema esquema1 = controlador.getEsquemas().get(boxEsquemas.getSelectedIndex() + 1);
+        esquema1.getTablas().add(tabla);
 
-        boxTablas.addItem(tabla.getNombre());
+        boxTablas.addItem(txtNombreTabla.getText());
+        NuevaTabla.jLabelNombreTabla.setText(txtNombreTabla.getText());
         txtNombreTabla.setText("");
-        System.out.println("Se agrego una tabla correctamente");
+        System.out.println("Se agrego una tabla correctamente al ID: " + boxEsquemas.getSelectedIndex() + 1);
+        System.out.println("TAMANO DEL ARRAYlIS DE TABLAS AL AGREGAR " + esquema1.getTablas().size());
 
     }
 
-//    public void borrarTabla() {
-//        tablas.remove(tablas.size() - 1);
-//        boxTablas.removeItemAt(tablas.size());
-//    }
-    public void nameColumnas() {
-        InterfazNuevaTabla obtenerNames = new InterfazNuevaTabla();
+    public void borrarTabla() {
 
-        BoxColumnas.addItem(obtenerNames.titulosColumnas.get(0));
+        if (controlador.getEsquemas().size() > 0) {
+            controlador.getEsquemas().get(boxEsquemas.getSelectedIndex() + 1).getTablas().clear();
+            boxTablas.remove(controlador.getEsquemas().get(boxEsquemas.getSelectedIndex() + 1).getTablas().size() - 1);
+            System.out.println("TAMANO DEL ARRAYLIST DE TABLAS DESPUES DE BORRAR = " + controlador.getEsquemas().get(boxEsquemas.getSelectedIndex() + 1).getTablas().size());
+        }
+    }
+
+    public void nameColumnas() {
 
     }
 
     //NO TOCAR!!!
 //    public void crearColumnas(ArrayList<String> listaColumnas) {
-//        //InterfazNuevaTabla obtenerTitulosColumnas = new InterfazNuevaTabla();
+//        //InterfazNuevaTabla obtenerTitulosColumnas = new NuevaTabla();
 //        ArrayList<Tablas> tablas = new ArrayList<>();
 //        this.tablas = tablas;
 //
