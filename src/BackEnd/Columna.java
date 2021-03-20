@@ -19,6 +19,8 @@ public class Columna {
         this.columna_ID = columna_ID;
     }
 
+    Columna() {}
+
     public String getNombre() {
         return Nombre;
     }

@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -19,12 +19,11 @@ public class Tabla {
    
     //Crear ArrayList de las columnas
 
-//    public Tabla() {}
+    public Tabla() {}
     
     public Tabla( int tabla_ID, String nombre) {
         this.nombre = nombre;
         this.tabla_ID = tabla_ID;
-      
     }
 
     public String getNombre() {
@@ -38,8 +37,11 @@ public class Tabla {
     public ArrayList<Columna> getColumnas() {
         return columnas;
     }
+
+    public void setColumnas(ArrayList<Columna> columnas) {
+        this.columnas = columnas;
+    }
     
-  
     @Override
     public String toString() {
         return  nombre ;
