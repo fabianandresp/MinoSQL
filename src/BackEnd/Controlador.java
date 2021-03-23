@@ -27,6 +27,7 @@ public class Controlador {
 
         MainWindow mino_SQL = new MainWindow(this);
         mino_SQL.setVisible(true);
+        mino_SQL.jPanel2_SlideBase.setVisible(false);
 //        NuevaTabla nueva = new NuevaTabla(this);
 //        nueva.setVisible(true);
     }
