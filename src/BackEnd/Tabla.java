@@ -41,19 +41,19 @@ public class Tabla {
     public void setColumnas(ArrayList<Columna> columnas) {
         this.columnas = columnas;
     }
+
+    public int getTabla_ID() {
+        return tabla_ID;
+    }
+
+    public void setTabla_ID(int tabla_ID) {
+        this.tabla_ID = tabla_ID;
+    }
+    
     
     @Override
     public String toString() {
         return  nombre ;
-    }
-
-//    public int getTamTablas() {
-//        return tamTablas;
-//    }
-//
-//    public void setTamTablas(int tamTablas) {
-//        this.tamTablas = tamTablas;
-//    }
-//    
+    }    
     
 }

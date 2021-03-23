@@ -79,10 +79,13 @@ public class NuevaTabla extends javax.swing.JFrame {
 
         setTitle("Creacion Columnas");
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(1, 22, 39));
         jPanel1.setForeground(new java.awt.Color(0, 0, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        txtNombreColumna.setBackground(new java.awt.Color(255, 255, 255));
+        txtNombreColumna.setFont(new java.awt.Font("Bahnschrift", 0, 12)); // NOI18N
+        txtNombreColumna.setForeground(new java.awt.Color(1, 22, 39));
         txtNombreColumna.setText("Nombre Columna");
         txtNombreColumna.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -99,36 +102,56 @@ public class NuevaTabla extends javax.swing.JFrame {
         });
         jPanel1.add(txtNombreColumna, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 128, 30));
 
+        btnListo.setBackground(new java.awt.Color(193, 240, 249));
+        btnListo.setFont(new java.awt.Font("Bahnschrift", 1, 12)); // NOI18N
+        btnListo.setForeground(new java.awt.Color(1, 22, 39));
         btnListo.setText("Listo");
+        btnListo.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Bahnschrift", 1, 12), new java.awt.Color(1, 22, 39))); // NOI18N
         btnListo.setPreferredSize(new java.awt.Dimension(40, 30));
         btnListo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnListoActionPerformed(evt);
             }
         });
-        jPanel1.add(btnListo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 330, 80, -1));
+        jPanel1.add(btnListo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 320, 80, -1));
 
+        btnNuevaColumna.setBackground(new java.awt.Color(193, 240, 249));
+        btnNuevaColumna.setFont(new java.awt.Font("Bahnschrift", 1, 12)); // NOI18N
+        btnNuevaColumna.setForeground(new java.awt.Color(1, 22, 39));
         btnNuevaColumna.setText("Nueva Columna");
+        btnNuevaColumna.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Bahnschrift", 1, 12), new java.awt.Color(1, 22, 39))); // NOI18N
         btnNuevaColumna.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNuevaColumnaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnNuevaColumna, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, -1, -1));
+        jPanel1.add(btnNuevaColumna, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, 110, 30));
+
+        jPanel2.setBackground(new java.awt.Color(1, 22, 39));
 
         JLabelColum1.setBackground(new java.awt.Color(255, 255, 255));
+        JLabelColum1.setFont(new java.awt.Font("Bahnschrift", 1, 12)); // NOI18N
+        JLabelColum1.setForeground(new java.awt.Color(255, 255, 255));
         JLabelColum1.setToolTipText("Nombre Columna 1");
 
         JLabelColum2.setBackground(new java.awt.Color(255, 255, 255));
+        JLabelColum2.setFont(new java.awt.Font("Bahnschrift", 1, 12)); // NOI18N
+        JLabelColum2.setForeground(new java.awt.Color(255, 255, 255));
         JLabelColum2.setToolTipText("Nombre Columna 1");
 
         JLabelColum3.setBackground(new java.awt.Color(255, 255, 255));
+        JLabelColum3.setFont(new java.awt.Font("Bahnschrift", 1, 12)); // NOI18N
+        JLabelColum3.setForeground(new java.awt.Color(255, 255, 255));
         JLabelColum3.setToolTipText("Nombre Columna 1");
 
         JLabelColum4.setBackground(new java.awt.Color(255, 255, 255));
+        JLabelColum4.setFont(new java.awt.Font("Bahnschrift", 1, 12)); // NOI18N
+        JLabelColum4.setForeground(new java.awt.Color(255, 255, 255));
         JLabelColum4.setToolTipText("Nombre Columna 1");
 
         JLabelColum5.setBackground(new java.awt.Color(255, 255, 255));
+        JLabelColum5.setFont(new java.awt.Font("Bahnschrift", 1, 12)); // NOI18N
+        JLabelColum5.setForeground(new java.awt.Color(255, 255, 255));
         JLabelColum5.setToolTipText("Nombre Columna 1");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -163,6 +186,9 @@ public class NuevaTabla extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 130, 210));
 
+        btnBorrar1.setBackground(new java.awt.Color(193, 240, 249));
+        btnBorrar1.setFont(new java.awt.Font("Bahnschrift", 1, 12)); // NOI18N
+        btnBorrar1.setForeground(new java.awt.Color(1, 22, 39));
         btnBorrar1.setText("X");
         btnBorrar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -171,6 +197,9 @@ public class NuevaTabla extends javax.swing.JFrame {
         });
         jPanel1.add(btnBorrar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, -1, -1));
 
+        btnBorrar2.setBackground(new java.awt.Color(193, 240, 249));
+        btnBorrar2.setFont(new java.awt.Font("Bahnschrift", 1, 12)); // NOI18N
+        btnBorrar2.setForeground(new java.awt.Color(1, 22, 39));
         btnBorrar2.setText("X");
         btnBorrar2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -179,6 +208,9 @@ public class NuevaTabla extends javax.swing.JFrame {
         });
         jPanel1.add(btnBorrar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, -1, -1));
 
+        btnBorrar3.setBackground(new java.awt.Color(193, 240, 249));
+        btnBorrar3.setFont(new java.awt.Font("Bahnschrift", 1, 12)); // NOI18N
+        btnBorrar3.setForeground(new java.awt.Color(1, 22, 39));
         btnBorrar3.setText("X");
         btnBorrar3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -187,6 +219,9 @@ public class NuevaTabla extends javax.swing.JFrame {
         });
         jPanel1.add(btnBorrar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, -1, -1));
 
+        btnBorrar4.setBackground(new java.awt.Color(193, 240, 249));
+        btnBorrar4.setFont(new java.awt.Font("Bahnschrift", 1, 12)); // NOI18N
+        btnBorrar4.setForeground(new java.awt.Color(1, 22, 39));
         btnBorrar4.setText("X");
         btnBorrar4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -195,6 +230,9 @@ public class NuevaTabla extends javax.swing.JFrame {
         });
         jPanel1.add(btnBorrar4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, -1, -1));
 
+        btnBorrar5.setBackground(new java.awt.Color(193, 240, 249));
+        btnBorrar5.setFont(new java.awt.Font("Bahnschrift", 1, 12)); // NOI18N
+        btnBorrar5.setForeground(new java.awt.Color(1, 22, 39));
         btnBorrar5.setText("X");
         btnBorrar5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -202,17 +240,20 @@ public class NuevaTabla extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnBorrar5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 270, -1, 30));
+
+        jLabelNombreTabla.setFont(new java.awt.Font("Bahnschrift", 1, 12)); // NOI18N
+        jLabelNombreTabla.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.add(jLabelNombreTabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 16, 130, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
         );
 
         pack();

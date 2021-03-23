@@ -9,8 +9,10 @@ import BackEnd.Columna;
 import BackEnd.Controlador;
 import BackEnd.Esquema;
 import BackEnd.Tabla;
+import java.awt.event.ItemEvent;
 import java.util.ArrayList;
 import java.util.Collection;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -72,6 +74,11 @@ public class MainWindow extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(1, 22, 39));
 
         boxEsquemas.setBackground(new java.awt.Color(53, 60, 81));
+        boxEsquemas.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                boxEsquemasItemStateChanged(evt);
+            }
+        });
         boxEsquemas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boxEsquemasActionPerformed(evt);
@@ -450,6 +457,19 @@ public class MainWindow extends javax.swing.JFrame {
     private void boxTablasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_boxTablasItemStateChanged
 
     }//GEN-LAST:event_boxTablasItemStateChanged
+    
+    //LLAMADA METODO POR MODIFICAR
+    private void boxEsquemasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_boxEsquemasItemStateChanged
+        
+        if(evt.getStateChange() == ItemEvent.SELECTED) {
+            boxTablas.setModel(new DefaultComboBoxModel(controlador.getTablas(controlador.getEsquema(boxEsquemas.getSelectedIndex()))));
+            //if(controlador.getEsquemas().get(boxEsquemas.getSelectedItem()).getEsquema_ID() == controlador.getTablas().getTabla_ID()) {
+            //boxTablas.setSelectedItem(null);
+            //boxTablas.add(this)
+        }
+        
+        //}
+    }//GEN-LAST:event_boxEsquemasItemStateChanged
 
     /**
      * @param args the command line arguments
