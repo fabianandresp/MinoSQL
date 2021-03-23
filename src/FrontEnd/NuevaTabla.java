@@ -26,9 +26,9 @@ public class NuevaTabla extends javax.swing.JFrame {
     /**
      * Creates new form NuevaTabla
      */
-    ArrayList<Columna> titulosColumnas = new ArrayList<>();
+    public ArrayList<Columna> titulosColumnas = new ArrayList<>();
     Controlador controlador;
-
+    
     public NuevaTabla(Controlador controlador) {
         this.controlador = controlador;
         initComponents();
@@ -46,8 +46,8 @@ public class NuevaTabla extends javax.swing.JFrame {
         btnBorrar4.setEnabled(false);
         btnBorrar5.setEnabled(false);
     }
-
-    NuevaTabla() {
+    
+    public NuevaTabla() {
         //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -260,7 +260,7 @@ public class NuevaTabla extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtNombreColumnaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreColumnaFocusGained
-
+        
         if (txtNombreColumna.getText().equals("Nombre Columna")) {
             txtNombreColumna.setText("");
             txtNombreColumna.setForeground(new Color(153, 153, 153));
@@ -268,7 +268,7 @@ public class NuevaTabla extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNombreColumnaFocusGained
 
     private void txtNombreColumnaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreColumnaFocusLost
-
+        
         if (txtNombreColumna.getText().equals("")) {
             txtNombreColumna.setText("Nombre Columna");
             txtNombreColumna.setForeground(new Color(153, 153, 153));
@@ -292,14 +292,12 @@ public class NuevaTabla extends javax.swing.JFrame {
         String nombreColumna = txtNombreColumna.getText();
         int idColumna = MainWindow.boxTablas.getSelectedIndex();
         Columna columna = new Columna(nombreColumna, idColumna);
-        //Esquema esquema = controlador.getEsquemas().get(MainWindow.boxEsquemas.getSelectedIndex());
-        //esquema.getTablas().get(MainWindow.boxTablas.getSelectedIndex() + 1).getColumnas().add(columna);
-        //System.out.println(controlador.getEsquemas().get(MainWindow.boxEsquemas.getSelectedIndex()).getTablas().get(MainWindow.boxTablas.getSelectedIndex()).getColumnas().size());
+     //   System.out.println(controlador.getEsquemas().get(MainWindow.boxEsquemas.getSelectedIndex()).getTablas().get(MainWindow.boxTablas.getSelectedIndex()).getColumnas().size());
         titulosColumnas.add(columna);
         txtNombreColumna.setText("");
         System.out.println("**Se agrego una columna**");
 
-        //ESTO SE PUEDE ELIMINAR? 
+        //ELIMINAR 
         //Esto no esta funcionando bien aun no logro levantar el jTextField que despliegue el nombre!
         //TextField mostrarColumnas = new TextField(txtNombreColumna.getText(), 20);
         //mostrarColumnas.setVisible(true);
@@ -313,34 +311,34 @@ public class NuevaTabla extends javax.swing.JFrame {
                 JLabelColum1.setEnabled(true);
                 btnBorrar1.setEnabled(true);
                 break;
-
+            
             case 2:
                 JLabelColum2.setText(titulosColumnas.get(1).getNombre());
                 JLabelColum2.setEnabled(true);
                 btnBorrar2.setEnabled(true);
                 break;
-
+            
             case 3:
                 JLabelColum3.setText(titulosColumnas.get(2).getNombre());
                 JLabelColum3.setEnabled(true);
                 btnBorrar3.setEnabled(true);
                 break;
-            /*case 4:
-                JLabelColum4.setText(titulosColumnas.get(3));
+            case 4:
+                JLabelColum4.setText(titulosColumnas.get(3).getNombre());
                 JLabelColum4.setEnabled(true);
                 btnBorrar4.setEnabled(true);
                 break;
             case 5:
-                JLabelColum5.setText(titulosColumnas.get(4));
+                JLabelColum5.setText(titulosColumnas.get(4).getNombre());
                 JLabelColum5.setEnabled(true);
                 btnBorrar5.setEnabled(true);
-                break;*/
+                break;
         }
-
+        
         for (int i = 0; i < titulosColumnas.size(); i++) {
             System.out.println(titulosColumnas.get(i));
         }
-
+        
         System.out.println(titulosColumnas.size());
 
     }//GEN-LAST:event_btnNuevaColumnaActionPerformed
@@ -383,16 +381,16 @@ public class NuevaTabla extends javax.swing.JFrame {
 
     //REVISAR COMENTARIOS!!!
     private void btnListoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListoActionPerformed
-        MainWindow setColumnas = new MainWindow();
-        ArrayList obtenerColumnas = controlador.getTablas().getColumnas();
-        obtenerColumnas = (ArrayList)titulosColumnas.clone(); //Aca CLONAMOS el Array!
-        controlador.getTablas().setColumnas(obtenerColumnas); //Aca lo SETTIAMOS al arraylist de columnas en clase Tabla
-        //System.out.println("CLONE: " + obtenerColumnas.size()); //Descomenta esta linea y la de abajo
-        //System.out.println("CLONE: " + controlador.getTablas().getColumnas().size()); //Y asi corroboramos que ambos valores son IGUALES
-        setColumnas.establecerColumnas(obtenerColumnas); //LLAMAMOS AL METODO!
-        titulosColumnas.clear(); //Limpiamos Array Temporal
-        System.out.println("ArrayReseteado: " + titulosColumnas.size());
-        System.out.println("CLONE: " + controlador.getTablas().getColumnas().size()); //Corroboramos el Clone sigue funcionando!
+//        MainWindow setColumnas = new MainWindow();
+//        ArrayList obtenerColumnas = controlador.getTablas().getColumnas();
+//        obtenerColumnas = (ArrayList)titulosColumnas.clone(); //Aca CLONAMOS el Array!
+//        controlador.getTablas().setColumnas(obtenerColumnas); //Aca lo SETTIAMOS al arraylist de columnas en clase Tabla
+//        //System.out.println("CLONE: " + obtenerColumnas.size()); //Descomenta esta linea y la de abajo
+//        //System.out.println("CLONE: " + controlador.getTablas().getColumnas().size()); //Y asi corroboramos que ambos valores son IGUALES
+//        setColumnas.establecerColumnas(obtenerColumnas); //LLAMAMOS AL METODO!
+//        titulosColumnas.clear(); //Limpiamos Array Temporal
+//        System.out.println("ArrayReseteado: " + titulosColumnas.size());
+//        System.out.println("CLONE: " + controlador.getTablas().getColumnas().size()); //Corroboramos el Clone sigue funcionando!
     }//GEN-LAST:event_btnListoActionPerformed
 
     /**

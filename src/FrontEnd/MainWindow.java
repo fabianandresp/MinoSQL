@@ -23,10 +23,7 @@ import javax.swing.table.TableColumn;
  */
 public class MainWindow extends javax.swing.JFrame {
 
-    /* **FABIAN IMPORTANTE** al realizar esta instancia he intentar vincular 
-    la interfaz secundaria a esta principal me lanza el error: java.lang.StackOverflowError */ //OTRA VEZ...! :(
-    //InterfazNuevaTabla creacionJTable = new NuevaTabla(); // DESCOMENTAR ESTA LINEA Y PROBAR
-    //NOTA ADICIONAL: Revisar linea 341 
+   DefaultTableModel modelo; 
     Controlador controlador;
 
     public MainWindow(Controlador controlador) {
@@ -35,7 +32,10 @@ public class MainWindow extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-    }
+       
+        }
+        
+    
 
     MainWindow() {
     }
@@ -49,6 +49,7 @@ public class MainWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         boxEsquemas = new javax.swing.JComboBox<>();
         txtNombreEsquema = new javax.swing.JTextField();
@@ -67,6 +68,18 @@ public class MainWindow extends javax.swing.JFrame {
         txtNombreTabla = new javax.swing.JTextField();
         BtnNuevaTabla = new javax.swing.JButton();
         BtnBorrarTabla = new javax.swing.JButton();
+        btnRefresh = new javax.swing.JButton();
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MiNoSQL");
@@ -282,6 +295,13 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
+        btnRefresh.setText("Refresh");
+        btnRefresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefreshActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -325,7 +345,8 @@ public class MainWindow extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(BtnBorrarTabla, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(BtnBorrarEsquema, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 26, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnRefresh)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -353,7 +374,9 @@ public class MainWindow extends javax.swing.JFrame {
                             .addComponent(BtnNuevaTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(BtnBorrarTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRefresh))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(BtnBuscarDato, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -468,19 +491,24 @@ public class MainWindow extends javax.swing.JFrame {
     private void boxTablasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_boxTablasItemStateChanged
 
     }//GEN-LAST:event_boxTablasItemStateChanged
-    
+
     //LLAMADA METODO POR MODIFICAR
     private void boxEsquemasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_boxEsquemasItemStateChanged
-        
-        if(evt.getStateChange() == ItemEvent.SELECTED) {
-            boxTablas.setModel(new DefaultComboBoxModel(controlador.getTablas(controlador.getEsquema(boxEsquemas.getSelectedIndex()))));
+
+        if (evt.getStateChange() == ItemEvent.SELECTED) {
+          //  boxTablas.setModel(new DefaultComboBoxModel(controlador.getTablas(controlador.getEsquema(boxEsquemas.getSelectedIndex()))));
             //if(controlador.getEsquemas().get(boxEsquemas.getSelectedItem()).getEsquema_ID() == controlador.getTablas().getTabla_ID()) {
             //boxTablas.setSelectedItem(null);
             //boxTablas.add(this)
         }
-        
+
         //}
     }//GEN-LAST:event_boxEsquemasItemStateChanged
+
+    private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
+        agregarColumnas();
+
+    }//GEN-LAST:event_btnRefreshActionPerformed
 
     /**
      * @param args the command line arguments
@@ -508,7 +536,9 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JButton BtnNuevoEsquema;
     public static javax.swing.JComboBox<String> boxEsquemas;
     public static javax.swing.JComboBox<String> boxTablas;
+    private javax.swing.JButton btnRefresh;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTablePrincipal;
     private javax.swing.JTextField txtBusquedaSql;
@@ -553,12 +583,12 @@ public class MainWindow extends javax.swing.JFrame {
     public void borrarEsquema() {
         if (boxTablas != null) {
             // FALTA AGREGAR QUE SE BORREN LAS TABLAS ASOCIADAS AL ESQUEMA 
-            controlador.getEsquemas().remove(controlador.getEsquemas().size() - 1);
+            controlador.getEsquemas().remove(controlador.getEsquemas().size());
             boxEsquemas.removeItemAt(controlador.getEsquemas().size());
 
             System.out.println(controlador.getEsquemas().size() + " Tamaño del MAP ");
         } else {
-            controlador.getEsquemas().remove(controlador.getEsquemas().size() - 1);
+            controlador.getEsquemas().remove(controlador.getEsquemas().size());
             boxEsquemas.removeItemAt(controlador.getEsquemas().size());
 
             System.out.println(controlador.getEsquemas().size() + " Tamaño del MAP ");
@@ -582,30 +612,34 @@ public class MainWindow extends javax.swing.JFrame {
 
     }
 
-    public void borrarTabla() {
+    public void borrarTabla() {//arreglar temprano
 
         if (controlador.getEsquemas().size() > 0) {
-            controlador.getEsquemas().get(boxEsquemas.getSelectedIndex() + 1).getTablas().clear();
-            boxTablas.remove(controlador.getEsquemas().get(boxEsquemas.getSelectedIndex() + 1).getTablas().size() - 1);
+
+            boxTablas.remove(controlador.getEsquemas().get(boxEsquemas.getSelectedIndex()).getTablas().size());
             System.out.println("TAMANO DEL ARRAYLIST DE TABLAS DESPUES DE BORRAR = " + controlador.getEsquemas().get(boxEsquemas.getSelectedIndex() + 1).getTablas().size());
         }
     }
 
-    public void nameColumnas() {
+    public void agregarColumnas() {
+        Tabla prueba = new Tabla();
+        prueba.clonarColumnas();
+        System.out.println(prueba.getColumnas().get(0).getNombre());
+      
 
     }
 
     //REVISAR PORQUE LANZA ERROR EN LA LINEA 576
-    public void establecerColumnas(ArrayList<Columna> obtenerColumnas) {
-        DefaultTableModel dtm = new DefaultTableModel();
-        System.out.println(obtenerColumnas.size());
-        for (int i = 0; i < obtenerColumnas.size(); i++) {
-            //dtm.setColumnIdentifiers(obtenerColumnas); //Lanza ERROR
-            dtm.addColumn(obtenerColumnas); //Teoricamente funciona bien!
-        }
-        System.out.println(dtm.getColumnCount());
-        jTablePrincipal.setModel(dtm); 
-    }
+//    public void establecerColumnas(ArrayList<Columna> obtenerColumnas) {
+//        DefaultTableModel dtm = new DefaultTableModel();
+//        System.out.println(obtenerColumnas.size());
+//        for (int i = 0; i < obtenerColumnas.size(); i++) {
+//            //dtm.setColumnIdentifiers(obtenerColumnas); //Lanza ERROR
+//            dtm.addColumn(obtenerColumnas); //Teoricamente funciona bien!
+//        }
+//        System.out.println(dtm.getColumnCount());
+//        jTablePrincipal.setModel(dtm);
+//    }
 }
 //NO TOCAR!!!
 //public void crearColumnas(ArrayList<String> listaColumnas) {

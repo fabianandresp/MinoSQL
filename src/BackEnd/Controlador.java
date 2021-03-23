@@ -27,8 +27,8 @@ public class Controlador {
 
         MainWindow mino_SQL = new MainWindow(this);
         mino_SQL.setVisible(true);
-        NuevaTabla nueva = new NuevaTabla(this);
-        nueva.setVisible(true);
+//        NuevaTabla nueva = new NuevaTabla(this);
+//        nueva.setVisible(true);
     }
 
     public void iniciarVentanaSecundaria() {
@@ -59,17 +59,17 @@ public class Controlador {
     }
     
     //Metodo por modificar o Corregir
-    public String[] getTablas(Esquema esquema) {
-        ArrayList<Tabla> showTablas = new ArrayList<>();
-        for (int i = 0; i < esquema.tablas.size(); i++) {
-            if (esquema.esquema_ID == esquema.tablas.get(i).tabla_ID) {
-                showTablas.add(esquema.getTablas().get(i));
-            }
-        }
-        System.out.println(showTablas.size());
-        String[] finalShowTablas = new String[showTablas.size()];
-        showTablas.toArray(finalShowTablas);
-        System.out.println(finalShowTablas.length);
-        return finalShowTablas;
-    }
+//    public String[] getTablas(Esquema esquema) {
+//        ArrayList<Tabla> showTablas = new ArrayList<>();
+//        for (int i = 0; i < esquema.tablas.size(); i++) {
+//            if (esquema.esquema_ID == esquema.tablas.get(i).tabla_ID) {
+//                showTablas.add(esquema.getTablas().get(i));
+//            }
+//        }
+//        System.out.println(showTablas.size());
+//        String[] finalShowTablas = new String[showTablas.size()];
+//        showTablas.toArray(finalShowTablas);
+//        System.out.println(finalShowTablas.length);
+//        return finalShowTablas;
+//    }
 }

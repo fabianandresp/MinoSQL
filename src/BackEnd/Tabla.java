@@ -5,6 +5,7 @@
  */
 package BackEnd;
 
+import FrontEnd.NuevaTabla;
 import java.util.ArrayList;
 
 /**
@@ -50,6 +51,11 @@ public class Tabla {
         this.tabla_ID = tabla_ID;
     }
     
+    public void clonarColumnas(){
+        NuevaTabla prueba = new  NuevaTabla();
+        
+        this.columnas = (ArrayList<Columna>) prueba.titulosColumnas.clone();
+    }
     
     @Override
     public String toString() {
