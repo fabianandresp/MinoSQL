@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.Color;
+import javax.swing.ComboBoxModel;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -23,10 +25,10 @@ import javax.swing.table.TableColumn;
  * @author pimie
  */
 public class MainWindow extends javax.swing.JFrame {
-    
+
     public ArrayList<Columna> titulosColumnas = new ArrayList<>();
-    
-    DefaultTableModel modelo; 
+
+    DefaultTableModel modelo;
     Controlador controlador;
 
     public MainWindow(Controlador controlador) {
@@ -35,10 +37,8 @@ public class MainWindow extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-       
-        }
-        
-    
+
+    }
 
     MainWindow() {
     }
@@ -161,35 +161,30 @@ public class MainWindow extends javax.swing.JFrame {
         jTablePrincipal.setForeground(new java.awt.Color(1, 22, 39));
         jTablePrincipal.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null}
             },
             new String [] {
-                "ID"
+                ""
             }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Double.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+        ));
+        jTablePrincipal.setColumnSelectionAllowed(true);
+        jTablePrincipal.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTablePrincipalMouseClicked(evt);
             }
         });
-        jTablePrincipal.setColumnSelectionAllowed(true);
         jScrollPane1.setViewportView(jTablePrincipal);
         jTablePrincipal.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
         BoxColumnas.setBackground(new java.awt.Color(53, 60, 81));
         BoxColumnas.setFont(new java.awt.Font("Bahnschrift", 1, 12)); // NOI18N
         BoxColumnas.setForeground(new java.awt.Color(255, 255, 255));
-        BoxColumnas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         txtDatoBuscar.setBackground(new java.awt.Color(255, 255, 255));
         txtDatoBuscar.setFont(new java.awt.Font("Bahnschrift", 0, 12)); // NOI18N
@@ -375,8 +370,8 @@ public class MainWindow extends javax.swing.JFrame {
                         .addGroup(jPanel1_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(BtnNuevaTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(BtnBorrarTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1_PrincipalLayout.createSequentialGroup()
@@ -386,9 +381,9 @@ public class MainWindow extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txtBusquedaSql, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1_PrincipalLayout.createSequentialGroup()
-                        .addGroup(jPanel1_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(BtnBorrarDato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(BtnBuscarDato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(BtnBuscarDato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BtnBorrarDato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(BtnBuscarSql, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -676,20 +671,22 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnBorrarTablaActionPerformed
 
     private void boxTablasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_boxTablasItemStateChanged
-
+        jLabelNombreTabla.setText((String) boxTablas.getSelectedItem());
     }//GEN-LAST:event_boxTablasItemStateChanged
 
     //LLAMADA METODO POR MODIFICAR
     private void boxEsquemasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_boxEsquemasItemStateChanged
+        Esquema tablas = new Esquema();
+        Tabla tabla = new Tabla();
+        if (tablas.getTablas().isEmpty()) {
+            System.out.println("Agregue tabla");
+        } else {
+            if (tabla.getTabla_ID() == boxEsquemas.getSelectedIndex()) {
 
-        if (evt.getStateChange() == ItemEvent.SELECTED) {
-          //  boxTablas.setModel(new DefaultComboBoxModel(controlador.getTablas(controlador.getEsquema(boxEsquemas.getSelectedIndex()))));
-            //if(controlador.getEsquemas().get(boxEsquemas.getSelectedItem()).getEsquema_ID() == controlador.getTablas().getTabla_ID()) {
-            //boxTablas.setSelectedItem(null);
-            //boxTablas.add(this)
+            }
         }
 
-        //}
+
     }//GEN-LAST:event_boxEsquemasItemStateChanged
 
     private void txtNombreColumnaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreColumnaFocusGained
@@ -713,65 +710,60 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNombreColumnaActionPerformed
 
     private void btnListoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListoActionPerformed
-        //        MainWindow setColumnas = new MainWindow();
-        //        ArrayList obtenerColumnas = controlador.getTablas().getColumnas();
-        //        obtenerColumnas = (ArrayList)titulosColumnas.clone(); //Aca CLONAMOS el Array!
-        //        controlador.getTablas().setColumnas(obtenerColumnas); //Aca lo SETTIAMOS al arraylist de columnas en clase Tabla
-        //        //System.out.println("CLONE: " + obtenerColumnas.size()); //Descomenta esta linea y la de abajo
-        //        //System.out.println("CLONE: " + controlador.getTablas().getColumnas().size()); //Y asi corroboramos que ambos valores son IGUALES
-        //        setColumnas.establecerColumnas(obtenerColumnas); //LLAMAMOS AL METODO!
-        //        titulosColumnas.clear(); //Limpiamos Array Temporal
-        //        System.out.println("ArrayReseteado: " + titulosColumnas.size());
-        //        System.out.println("CLONE: " + controlador.getTablas().getColumnas().size()); //Corroboramos el Clone sigue funcionando!
+
+        modelo = new DefaultTableModel();
+        for (Columna cadena : titulosColumnas) {
+            modelo.addColumn(cadena);
+            BoxColumnas.addItem(cadena.getNombre());
+        }
+        this.jTablePrincipal.setModel(modelo);
+        JLabelColum1.setText(" ");
+        JLabelColum2.setText(" ");
+        JLabelColum3.setText(" ");
+        JLabelColum4.setText(" ");
+        JLabelColum5.setText(" ");
+        contadorColumnas=0;
         jPanel2_SlideBase.setVisible(false);
     }//GEN-LAST:event_btnListoActionPerformed
 
     private void btnNuevaColumnaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevaColumnaActionPerformed
 
         String nombreColumna = txtNombreColumna.getText();
-        int idColumna = MainWindow.boxTablas.getSelectedIndex();
+        int idColumna = boxTablas.getSelectedIndex();
         Columna columna = new Columna(nombreColumna, idColumna);
         //   System.out.println(controlador.getEsquemas().get(MainWindow.boxEsquemas.getSelectedIndex()).getTablas().get(MainWindow.boxTablas.getSelectedIndex()).getColumnas().size());
         titulosColumnas.add(columna);
         txtNombreColumna.setText("");
         System.out.println("**Se agrego una columna**");
 
-        //ELIMINAR
-        //Esto no esta funcionando bien aun no logro levantar el jTextField que despliegue el nombre!
-        //TextField mostrarColumnas = new TextField(txtNombreColumna.getText(), 20);
-        //mostrarColumnas.setVisible(true);
-        //jPanel2.add(mostrarColumnas, FlowLayout.CENTER, -1);
-        //jPanel1.add(mostrarColumnas, -1, getComponentCount()-1);
-        //JButton botonEliminar = new JButton("X");
-        // this.jPanel2.add(botonEliminar);
-        switch (titulosColumnas.size()) {
+        switch (contadorColumnas) {
+            case 0:
+                JLabelColum1.setText(titulosColumnas.get(contadorColumnas).getNombre());
+                JLabelColum1.setEnabled(true);
+                btnBorrar1.setEnabled(true);
+                break;
+
             case 1:
-            JLabelColum1.setText(titulosColumnas.get(0).getNombre());
-            JLabelColum1.setEnabled(true);
-            btnBorrar1.setEnabled(true);
-            break;
+                JLabelColum2.setText(titulosColumnas.get(contadorColumnas).getNombre());
+                JLabelColum2.setEnabled(true);
+                btnBorrar2.setEnabled(true);
+                break;
 
             case 2:
-            JLabelColum2.setText(titulosColumnas.get(1).getNombre());
-            JLabelColum2.setEnabled(true);
-            btnBorrar2.setEnabled(true);
-            break;
-
+                JLabelColum3.setText(titulosColumnas.get(contadorColumnas).getNombre());
+                JLabelColum3.setEnabled(true);
+                btnBorrar3.setEnabled(true);
+                break;
             case 3:
-            JLabelColum3.setText(titulosColumnas.get(2).getNombre());
-            JLabelColum3.setEnabled(true);
-            btnBorrar3.setEnabled(true);
-            break;
+                JLabelColum4.setText(titulosColumnas.get(contadorColumnas).getNombre());
+                JLabelColum4.setEnabled(true);
+                btnBorrar4.setEnabled(true);
+                break;
             case 4:
-            JLabelColum4.setText(titulosColumnas.get(3).getNombre());
-            JLabelColum4.setEnabled(true);
-            btnBorrar4.setEnabled(true);
-            break;
-            case 5:
-            JLabelColum5.setText(titulosColumnas.get(4).getNombre());
-            JLabelColum5.setEnabled(true);
-            btnBorrar5.setEnabled(true);
-            break;
+                JLabelColum5.setText(titulosColumnas.get(contadorColumnas).getNombre());
+                JLabelColum5.setEnabled(true);
+                btnBorrar5.setEnabled(true);
+                break;
         }
 
         for (int i = 0; i < titulosColumnas.size(); i++) {
@@ -779,12 +771,14 @@ public class MainWindow extends javax.swing.JFrame {
         }
 
         System.out.println(titulosColumnas.size());
+        contadorColumnas++;
     }//GEN-LAST:event_btnNuevaColumnaActionPerformed
 
     private void btnBorrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrar1ActionPerformed
         JLabelColum1.setText(null);
         btnBorrar1.setEnabled(false);
         titulosColumnas.remove(0);
+        contadorColumnas--;
         System.out.println("Se elimino una columnas");
     }//GEN-LAST:event_btnBorrar1ActionPerformed
 
@@ -792,6 +786,7 @@ public class MainWindow extends javax.swing.JFrame {
         JLabelColum2.setText(null);
         btnBorrar2.setEnabled(false);
         titulosColumnas.remove(1);
+        contadorColumnas--;
         System.out.println("Se elimino una columnas");
     }//GEN-LAST:event_btnBorrar2ActionPerformed
 
@@ -799,6 +794,7 @@ public class MainWindow extends javax.swing.JFrame {
         JLabelColum3.setText(null);
         btnBorrar3.setEnabled(false);
         titulosColumnas.remove(2);
+        contadorColumnas--;
         System.out.println("Se elimino una columnas");
     }//GEN-LAST:event_btnBorrar3ActionPerformed
 
@@ -806,6 +802,7 @@ public class MainWindow extends javax.swing.JFrame {
         JLabelColum4.setText(null);
         btnBorrar4.setEnabled(false);
         titulosColumnas.remove(3);
+        contadorColumnas--;
         System.out.println("Se elimino una columnas");
     }//GEN-LAST:event_btnBorrar4ActionPerformed
 
@@ -813,8 +810,13 @@ public class MainWindow extends javax.swing.JFrame {
         JLabelColum5.setText(null);
         btnBorrar5.setEnabled(false);
         titulosColumnas.remove(4);
+        contadorColumnas--;
         System.out.println("Se elimino una columnas");
     }//GEN-LAST:event_btnBorrar5ActionPerformed
+
+    private void jTablePrincipalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTablePrincipalMouseClicked
+       
+    }//GEN-LAST:event_jTablePrincipalMouseClicked
 
     /**
      * @param args the command line arguments
@@ -871,6 +873,7 @@ public class MainWindow extends javax.swing.JFrame {
 
     ArrayList<String> esquema;
     Integer contador = 1;
+    int contadorColumnas = 0;
 
     //Tablas tablaX;
     int cont = 1;
@@ -947,7 +950,6 @@ public class MainWindow extends javax.swing.JFrame {
         Tabla prueba = new Tabla();
         prueba.clonarColumnas();
         System.out.println(prueba.getColumnas().get(0).getNombre());
-      
 
     }
 

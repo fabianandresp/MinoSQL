@@ -36,7 +36,13 @@ public class Columna {
     public void setColumna_ID(int columna_ID) {
         this.columna_ID = columna_ID;
     }
+
+    @Override
+    public String toString() {
+        return  Nombre;
+    }
     
     
+        
     
 }
