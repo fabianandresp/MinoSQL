@@ -694,6 +694,8 @@ public class MainWindow extends javax.swing.JFrame {
         if(evt.getStateChange()== ItemEvent.SELECTED) {
              String item = (String) evt.getItem();
             JOptionPane.showMessageDialog(this, item);
+            JOptionPane.showMessageDialog(this, "HAY QUE ARREGLAAAAARLO!!!");
+            
             
         }
         
